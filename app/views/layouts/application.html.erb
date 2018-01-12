@@ -1,14 +1,57 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>GradeAssist2</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<%= yield %>
-
-</body>
+  <head>
+    <title>GradeAssist</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/showdown/1.6.4/showdown.min.js' %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#top-navbar">
+            <i class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></i>
+          </button>
+          <span><%= link_to "GradeAssist", about_path, :class => 'navbar-brand' %></span>
+        </div>
+        <div class="collapse navbar-collapse" id="top-navbar">
+          <% if user_signed_in? %>
+            <p class="navbar-text"><%= image_tag gravatar_url(current_user.email, 32) %> <%= current_user.username %></p>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="navbar-btn navbar-right"><%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'nav-tabs' %></li>
+              <li class="navbar-btn navbar-right"><%= link_to 'Edit profile', edit_user_registration_path, :class => 'nav-tabs' %></li>
+              <li class="navbar-btn navbar-right"><%= link_to "Index", root_path, :class => 'nav-tabs' %></li>
+            </ul>
+          <% else %>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="navbar-btn"><%= link_to "Home", root_path %></li>
+              <li class="navbar-btn"><%= link_to "Sign Up", new_user_registration_path %></li>
+              <li class="navbar-btn"><%= link_to "Sign In", new_user_session_path %></li>
+            </ul>
+          <% end %>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="flash">
+        <% if flash[:notice] %>
+          <div class="alert alert-info">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <%= flash[:notice] %>
+          </div>
+        <% elsif flash[:alert] %>
+          <div class="alert alert-warning">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <%= flash[:alert] %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="container">
+      <%= yield %>
+    </div>
+  </body>
 </html>
