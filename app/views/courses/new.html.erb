@@ -1,0 +1,29 @@
+<h2>New Class</h2>
+<!-- <hr>
+<%= simple_form_for @course do |f| %>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.input :name %>
+          <%= f.label :start_date %><br>
+          <%= f.text_field :start_date, data:{ provide:'datepicker' }, class: 'small-text-field course-datepicker' %><br>
+          <%= f.label :end_date %><br>
+          <%= f.text_field :end_date, data:{ provide:'datepicker' }, class: 'small-text-field course-datepicker' %><br>
+          <p><strong>Students</strong></p>
+          <div id="students">
+            <%= f.simple_fields_for :enrollments do |enrollment| %>
+              <%= render 'enrollment_fields', f: enrollment %>
+              <%= link_to_add_association 'Add', f, :enrollments, class: 'btn btn-success' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2 col-md-offset-8">
+          <%= f.button :submit, class: 'btn btn-info' %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

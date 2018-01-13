@@ -1,2 +1,37 @@
-<h1>Welcome#dashboard</h1>
-<p>Find me in app/views/welcome/dashboard.html.erb</p>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <h1 class="text-center"><%= current_user.username %>'s Dashboard</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="row">
+      <% @courses.each do |course| %>
+        <div class="col-md-6">
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title text-center"><%= course.name %></h3>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-3">
+            <h3><%= link_to "All Classes", courses_path %> <span class="badge"><%= @courses.count %></span></h3>
+          </div>
+  
+          <div class="col-md-3">
+            <h3><%= link_to "Create Class", new_course_path %></h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

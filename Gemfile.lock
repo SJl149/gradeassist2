@@ -1,3 +1,14 @@
+GIT
+  remote: https://github.com/randym/axlsx.git
+  revision: 776037c0fc799bb09da8c9ea47980bd3bf296874
+  ref: 776037c0fc799bb09da8c9ea47980bd3bf296874
+  specs:
+    axlsx (2.1.0.pre)
+      htmlentities (~> 4.3.4)
+      mimemagic (~> 0.3)
+      nokogiri (>= 1.6.6)
+      rubyzip (>= 1.2.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -38,10 +49,6 @@ GEM
     arel (6.0.4)
     autoprefixer-rails (7.2.5)
       execjs
-    axlsx (2.0.1)
-      htmlentities (~> 4.3.1)
-      nokogiri (>= 1.4.1)
-      rubyzip (~> 1.0.0)
     axlsx_rails (0.5.1)
       actionpack (>= 3.1)
       axlsx (>= 2.0.1)
@@ -107,6 +114,7 @@ GEM
     mail (2.7.0)
       mini_mime (>= 0.1.1)
     method_source (0.9.0)
+    mimemagic (0.3.2)
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
     minitest (5.11.1)
@@ -183,7 +191,7 @@ GEM
       rspec-support (~> 3.7.0)
     rspec-support (3.7.0)
     ruby-graphviz (1.2.3)
-    rubyzip (1.0.0)
+    rubyzip (1.2.1)
     sass (3.5.5)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -238,7 +246,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  axlsx (= 2.0.1)
+  axlsx!
   axlsx_rails
   best_in_place (~> 3.1)
   bootstrap-datepicker-rails
@@ -259,7 +267,7 @@ DEPENDENCIES
   rails-erd
   rails_12factor
   rspec-rails
-  rubyzip (= 1.0.0)
+  rubyzip (>= 1.2.1)
   sass-rails (~> 5.0)
   shoulda
   simple_calendar (~> 2.0, >= 2.0.6)
