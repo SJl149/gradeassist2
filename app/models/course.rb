@@ -3,8 +3,8 @@ class Course < ActiveRecord::Base
   has_many :holidays
   has_many :class_days
 
-  accepts_nested_attributes_for :holidays
-  accepts_nested_attributes_for :class_days
+  accepts_nested_attributes_for :holidays, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :class_days, reject_if: :all_blank, allow_destroy: true
 
   validates :name, uniqueness: true
   validates :start_date, presence: true
