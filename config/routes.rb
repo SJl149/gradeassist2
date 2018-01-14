@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   resources :courses
   resources :holidays
   resources :class_days
-  
+  resources :categories
+
   authenticated :user do
     root 'welcome#dashboard', as: :authenticate_root
   end

@@ -25,6 +25,13 @@
             <%= link_to_add_association 'Add', f, :holidays, class: 'btn btn-success' %>
           <% end %>
         </div>
+        <h3>Grade Categories</h3>
+        <div id="categories">
+          <%= f.simple_fields_for :categories do |category| %>
+            <%= render 'category_fields', f: category %>
+            <%= link_to_add_association 'Add', f, :categories, class: 'btn btn-success' %>
+          <% end %>
+        </div>
       </div>
       <div class="row">
         <div class="col-md-2 col-md-offset-8">

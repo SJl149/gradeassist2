@@ -12,4 +12,8 @@ $(document).on('turbolinks:load', function() {
    $("#holidays a.add_fields").
    data("association-insertion-position", 'before').
    data("association-insertion-node", 'this');
+
+   $("#categories a.add_fields").
+   data("association-insertion-position", 'before').
+   data("association-insertion-node", 'this');
 })
