@@ -1,16 +1,14 @@
 <h2>New Class</h2>
 <hr>
-<%= simple_form_for @course do |f| %>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="form-group">
+<div class="course-form">
+  <%= simple_form_for @course do |f| %>
+    <div class="row">
+      <div class="col-md-12">
         <%= f.input :name %>
         <%= f.label :start_date %><br>
         <%= f.text_field :start_date, data:{ provide:'datepicker' }, class: 'small-text-field course-datepicker' %><br>
         <%= f.label :end_date %><br>
         <%= f.text_field :end_date, data:{ provide:'datepicker' }, class: 'small-text-field course-datepicker' %>
-      </div>
-      <div class="form-group">
         <h3>Class Days</h3>
         <div id="class_days">
           <%= f.simple_fields_for :class_days do |class_day| %>
@@ -20,8 +18,6 @@
             </div>
           <% end %>
         </div>
-      </div>
-      <div class="form-group">
         <h3>Holidays</h3>
         <div id="holidays">
           <%= f.simple_fields_for :holidays do |holiday| %>
@@ -30,12 +26,11 @@
           <% end %>
         </div>
       </div>
-      </div>
       <div class="row">
         <div class="col-md-2 col-md-offset-8">
           <%= f.button :submit, class: 'btn btn-info' %>
         </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>

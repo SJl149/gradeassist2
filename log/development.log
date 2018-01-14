@@ -2384,3 +2384,216 @@ Processing by CoursesController#new as HTML
   Rendered courses/_holiday_fields.html.erb (1.9ms)
   Rendered courses/new.html.erb within layouts/application (22.5ms)
 Completed 200 OK in 174ms (Views: 172.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/courses/new" for ::1 at 2018-01-14 13:19:56 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by CoursesController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered courses/_class_day_fields.html.erb (4.9ms)
+  Rendered courses/_class_day_fields.html.erb (3.4ms)
+  Rendered courses/_holiday_fields.html.erb (3.1ms)
+  Rendered courses/_holiday_fields.html.erb (2.8ms)
+  Rendered courses/new.html.erb within layouts/application (411.8ms)
+Completed 200 OK in 2724ms (Views: 2667.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/courses.self-9b88ed67a9f0b11454f7ef2dcdd170b06dc6bae75d4f7b4cbcc487c2f81b6f3f.css?body=1" for ::1 at 2018-01-14 13:19:59 -0500
+
+
+Started GET "/" for ::1 at 2018-01-14 13:20:02 -0500
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Processing by WelcomeController#dashboard as HTML
+  [1m[35mCourse Load (0.2ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."user_id" = ?  [["user_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "courses" WHERE "courses"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered welcome/dashboard.html.erb within layouts/application (7.9ms)
+Completed 200 OK in 169ms (Views: 167.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/courses/new" for ::1 at 2018-01-14 13:20:04 -0500
+Processing by CoursesController#new as HTML
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered courses/_class_day_fields.html.erb (2.8ms)
+  Rendered courses/_class_day_fields.html.erb (5.3ms)
+  Rendered courses/_holiday_fields.html.erb (12.7ms)
+  Rendered courses/_holiday_fields.html.erb (4.0ms)
+  Rendered courses/new.html.erb within layouts/application (37.2ms)
+Completed 200 OK in 277ms (Views: 272.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/courses/new" for ::1 at 2018-01-14 13:20:58 -0500
+Processing by CoursesController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered courses/_class_day_fields.html.erb (2.0ms)
+  Rendered courses/_class_day_fields.html.erb (2.0ms)
+  Rendered courses/_holiday_fields.html.erb (2.1ms)
+  Rendered courses/_holiday_fields.html.erb (1.9ms)
+  Rendered courses/new.html.erb within layouts/application (17.6ms)
+Completed 200 OK in 1846ms (Views: 1843.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/courses.self-5efcef6175782d355f91ea1f834ce3561b4f1a62d74f84a56c902e0b0a9b33e6.css?body=1" for ::1 at 2018-01-14 13:21:00 -0500
+
+
+Started GET "/courses/new" for ::1 at 2018-01-14 13:21:14 -0500
+Processing by CoursesController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered courses/_class_day_fields.html.erb (2.0ms)
+  Rendered courses/_class_day_fields.html.erb (1.8ms)
+  Rendered courses/_holiday_fields.html.erb (3.7ms)
+  Rendered courses/_holiday_fields.html.erb (2.1ms)
+  Rendered courses/new.html.erb within layouts/application (19.4ms)
+Completed 200 OK in 1690ms (Views: 1688.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/courses.self-cbd90761be3f2b8aef888fdab11cae001b87ad87695729b6a48cc84f0bb876c0.css?body=1" for ::1 at 2018-01-14 13:21:16 -0500
+
+
+Started GET "/courses/new" for ::1 at 2018-01-14 13:24:04 -0500
+Processing by CoursesController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered courses/_class_day_fields.html.erb (2.4ms)
+  Rendered courses/_class_day_fields.html.erb (2.4ms)
+  Rendered courses/_holiday_fields.html.erb (2.5ms)
+  Rendered courses/_holiday_fields.html.erb (2.7ms)
+  Rendered courses/new.html.erb within layouts/application (20.8ms)
+Completed 200 OK in 1913ms (Views: 1910.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/courses.self-befc77670fe872b7f3aee65b9db85b7f6385d9e1ab36423df732c26bc21f7079.css?body=1" for ::1 at 2018-01-14 13:24:06 -0500
+
+
+Started GET "/" for ::1 at 2018-01-14 13:26:19 -0500
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Processing by WelcomeController#dashboard as HTML
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "courses" WHERE "courses"."user_id" = ?  [["user_id", 1]]
+  Rendered welcome/dashboard.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 1939ms (Views: 1938.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2018-01-14 13:26:21 -0500
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Processing by WelcomeController#dashboard as HTML
+  [1m[35mCourse Load (0.1ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."user_id" = ?  [["user_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "courses" WHERE "courses"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered welcome/dashboard.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 205ms (Views: 204.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/courses.self-c52ae5e188111d23d64855198de4603f771150ceb4450f4681ff98f4a307840c.css?body=1" for ::1 at 2018-01-14 13:26:21 -0500
+
+
+Started GET "/" for ::1 at 2018-01-14 13:26:23 -0500
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Processing by WelcomeController#dashboard as HTML
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "courses" WHERE "courses"."user_id" = ?  [["user_id", 1]]
+  Rendered welcome/dashboard.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 164ms (Views: 163.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/courses/new" for ::1 at 2018-01-14 13:26:25 -0500
+Processing by CoursesController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered courses/_class_day_fields.html.erb (2.2ms)
+  Rendered courses/_class_day_fields.html.erb (1.9ms)
+  Rendered courses/_holiday_fields.html.erb (2.2ms)
+  Rendered courses/_holiday_fields.html.erb (2.0ms)
+  Rendered courses/new.html.erb within layouts/application (18.6ms)
+Completed 200 OK in 142ms (Views: 132.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for ::1 at 2018-01-14 13:28:22 -0500
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Processing by WelcomeController#dashboard as HTML
+  [1m[36mCourse Load (0.4ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "courses" WHERE "courses"."user_id" = ?  [["user_id", 1]]
+  Rendered welcome/dashboard.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 1889ms (Views: 1888.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/courses.self-27fc614d4536bde6cc81be985d03d0d8e5511f0fc5231541ba80ca551049fee3.css?body=1" for ::1 at 2018-01-14 13:28:24 -0500
+
+
+Started GET "/" for ::1 at 2018-01-14 13:28:24 -0500
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Processing by WelcomeController#dashboard as HTML
+  [1m[35mCourse Load (0.1ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."user_id" = ?  [["user_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "courses" WHERE "courses"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered welcome/dashboard.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 150ms (Views: 149.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/courses/new" for ::1 at 2018-01-14 13:28:27 -0500
+Processing by CoursesController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered courses/_class_day_fields.html.erb (1.8ms)
+  Rendered courses/_class_day_fields.html.erb (1.7ms)
+  Rendered courses/_holiday_fields.html.erb (1.8ms)
+  Rendered courses/_holiday_fields.html.erb (1.7ms)
+  Rendered courses/new.html.erb within layouts/application (17.3ms)
+Completed 200 OK in 172ms (Views: 169.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for ::1 at 2018-01-14 13:29:21 -0500
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Processing by WelcomeController#dashboard as HTML
+  [1m[35mCourse Load (0.1ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."user_id" = ?  [["user_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "courses" WHERE "courses"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered welcome/dashboard.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 172ms (Views: 171.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2018-01-14 13:29:24 -0500
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Processing by WelcomeController#dashboard as HTML
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "courses" WHERE "courses"."user_id" = ?  [["user_id", 1]]
+  Rendered welcome/dashboard.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 172ms (Views: 171.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/courses/new" for ::1 at 2018-01-14 13:29:26 -0500
+Processing by CoursesController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered courses/_class_day_fields.html.erb (3.8ms)
+  Rendered courses/_class_day_fields.html.erb (2.3ms)
+  Rendered courses/_holiday_fields.html.erb (2.3ms)
+  Rendered courses/_holiday_fields.html.erb (2.3ms)
+  Rendered courses/new.html.erb within layouts/application (24.8ms)
+Completed 200 OK in 168ms (Views: 164.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/courses/new" for ::1 at 2018-01-14 13:33:04 -0500
+Processing by CoursesController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered courses/_class_day_fields.html.erb (2.1ms)
+  Rendered courses/_class_day_fields.html.erb (2.1ms)
+  Rendered courses/_holiday_fields.html.erb (2.2ms)
+  Rendered courses/_holiday_fields.html.erb (2.4ms)
+  Rendered courses/new.html.erb within layouts/application (19.8ms)
+Completed 200 OK in 166ms (Views: 163.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/courses/new" for ::1 at 2018-01-14 13:34:34 -0500
+Processing by CoursesController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered courses/_class_day_fields.html.erb (1.9ms)
+  Rendered courses/_class_day_fields.html.erb (1.8ms)
+  Rendered courses/_holiday_fields.html.erb (1.7ms)
+  Rendered courses/_holiday_fields.html.erb (2.3ms)
+  Rendered courses/new.html.erb within layouts/application (16.8ms)
+Completed 200 OK in 1800ms (Views: 1798.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/application.self-f5e0bd315c7c9591c6e40d1f2c9843a8ab867190eabdeadd3b1de2f31faeaf80.css?body=1" for ::1 at 2018-01-14 13:34:36 -0500
+
+
+Started GET "/" for ::1 at 2018-01-14 13:35:32 -0500
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Processing by WelcomeController#dashboard as HTML
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "courses" WHERE "courses"."user_id" = ?  [["user_id", 1]]
+  Rendered welcome/dashboard.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 140ms (Views: 139.6ms | ActiveRecord: 0.2ms)
