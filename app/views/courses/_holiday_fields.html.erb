@@ -1,0 +1,6 @@
+<div class="nested-fields holiday-tag-fields form-inline">
+  <%= f.input :name %>
+  <%= f.input :class_date, as: :date %>
+  <%= link_to_add_association 'Add', f, :holiday, class: 'btn btn-primary' %>
+  <br>
+</div>

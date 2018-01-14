@@ -1,0 +1,5 @@
+<div class="nested-fields class_day-tag-fields form-inline">
+  <%= f.association :day_of_week, collection: 1..7 %>
+  <%= link_to_add_association 'Add', f, :class_day, class: 'btn btn-primary' %>
+  <br>
+</div>

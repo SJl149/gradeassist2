@@ -15,21 +15,21 @@ class CoursesController < ApplicationController
   end
 
   def new
-    #@course = Course.new
-    #@course.enrollments.build
+    @course = Course.new
+    @course.semesters.build
   end
 
   def create
-    #@course = current_user.courses.new(course_params)
+    @course = current_user.courses.new(course_params)
 
-    #if @course.save
+    if @course.save
     #  CreateStudentDailygrades.new(@course, current_user).call
-    #  flash[:notice] = "Course was created successfully."
-    #  redirect_to root_path
-    #else
-    #  flash.now[:alert] = "Error creating the course. Please try again."
-    #  render :new
-    #end
+      flash[:notice] = "Course was created successfully."
+      redirect_to root_path
+    else
+      flash.now[:alert] = "Error creating the course. Please try again."
+      render :new
+    end
   end
 
   def edit
@@ -63,6 +63,11 @@ class CoursesController < ApplicationController
   private
 
   def course_params
-    params.require(:course).permit(:name)
+    params.require(:course).permit(
+      :name,
+      semesters_attributes: [:id, :name, :start_date, :end_date, :course_id,
+        class_days_attributes: [:id, :day_of_week, :semester_id],
+        holidays_attributes: [:id, :name, :class_date, :semester_id]
+      ])
   end
 end
