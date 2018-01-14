@@ -1399,3 +1399,988 @@ Processing by CoursesController#new as HTML
   [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
   Rendered courses/new.html.erb within layouts/application (435.4ms)
 Completed 200 OK in 615ms (Views: 602.2ms | ActiveRecord: 0.7ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddStartDateToCourses (20180114143546)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (1.0ms)[0m  [1mALTER TABLE "courses" ADD "start_date" datetime[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20180114143546"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.2ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_class_days_on_semester_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_class_days_on_semester_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_courses_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_courses_on_user_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_holidays_on_semester_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_holidays_on_semester_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_semesters_on_course_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_semesters_on_course_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddEndDateToCourses (20180114143711)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "courses" ADD "end_date" datetime[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20180114143711"]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_class_days_on_semester_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_class_days_on_semester_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_courses_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_courses_on_user_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_holidays_on_semester_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_holidays_on_semester_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_semesters_on_course_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_semesters_on_course_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to DropSemesters (20180114144112)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.6ms)[0m  [1mDROP TABLE "semesters"[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20180114144112"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_class_days_on_semester_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_class_days_on_semester_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_courses_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_courses_on_user_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_holidays_on_semester_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_holidays_on_semester_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to RemoveSemesterFromHolidays (20180114145708)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TEMPORARY TABLE "aholidays" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "class_date" datetime, "semester_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_holidays_on_semester_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_holidays_on_semester_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  CREATE  INDEX "tindex_aholidays_on_semester_id" ON "aholidays" ("semester_id")
+  [1m[36m (0.0ms)[0m  [1mSELECT * FROM "holidays"[0m
+  [1m[35m (0.4ms)[0m  DROP TABLE "holidays"
+  [1m[36m (0.1ms)[0m  [1mCREATE TABLE "holidays" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "class_date" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_aholidays_on_semester_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_aholidays_on_semester_id' AND type='index'
+
+  [1m[36m (0.0ms)[0m  [1mSELECT * FROM "aholidays"[0m
+  [1m[35m (0.1ms)[0m  DROP TABLE "aholidays"
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180114145708"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_class_days_on_semester_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_class_days_on_semester_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_courses_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_courses_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to RemoveSemesterFromClassDays (20180114145835)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mCREATE TEMPORARY TABLE "aclass_days" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "day_of_week" integer, "semester_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.0ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_class_days_on_semester_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_class_days_on_semester_id' AND type='index'
+
+  [1m[36m (0.0ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  CREATE  INDEX "tindex_aclass_days_on_semester_id" ON "aclass_days" ("semester_id")
+  [1m[36m (0.0ms)[0m  [1mSELECT * FROM "class_days"[0m
+  [1m[35m (0.3ms)[0m  DROP TABLE "class_days"
+  [1m[36m (0.1ms)[0m  [1mCREATE TABLE "class_days" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "day_of_week" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.0ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_aclass_days_on_semester_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_aclass_days_on_semester_id' AND type='index'
+
+  [1m[36m (0.0ms)[0m  [1mSELECT * FROM "aclass_days"[0m
+  [1m[35m (0.1ms)[0m  DROP TABLE "aclass_days"
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180114145835"]]
+  [1m[35m (5.9ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_courses_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_courses_on_user_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddCourseToClassDays (20180114150100)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "class_days" ADD "course_id" integer[0m
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_class_days_on_course_id" ON "class_days" ("course_id")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20180114150100"]]
+  [1m[36m (5.8ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.2ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_class_days_on_course_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_class_days_on_course_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_courses_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_courses_on_user_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddCourseToHolidays (20180114150210)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "holidays" ADD "course_id" integer[0m
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_holidays_on_course_id" ON "holidays" ("course_id")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20180114150210"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_class_days_on_course_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_class_days_on_course_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_courses_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_courses_on_user_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_holidays_on_course_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_holidays_on_course_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_confirmation_token' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+
+
+
+Started GET "/" for ::1 at 2018-01-14 10:41:02 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Processing by WelcomeController#dashboard as HTML
+  [1m[36mCourse Load (0.2ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "courses" WHERE "courses"."user_id" = ?  [["user_id", 1]]
+  Rendered welcome/dashboard.html.erb within layouts/application (16.1ms)
+Completed 200 OK in 751ms (Views: 722.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/courses.self-9e66d49e5e1c7f05438596c2967f1d15e9778656627c66eddea56c15410f4595.js?body=1" for ::1 at 2018-01-14 10:41:03 -0500
+
+
+Started GET "/courses/new" for ::1 at 2018-01-14 10:41:09 -0500
+Processing by CoursesController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered courses/_class_day_fields.html.erb (4.4ms)
+  Rendered courses/new.html.erb within layouts/application (512.3ms)
+Completed 401 Unauthorized in 550ms (ActiveRecord: 0.5ms)
+
+ActionView::Template::Error (Association :day_of_week not found):
+    1: <div class="nested-fields class_day-tag-fields form-inline">
+    2:   <%= f.association :day_of_week, collection: 1..7 %>
+    3:   <%= link_to_add_association 'Add', f, :class_day, class: 'btn btn-primary' %>
+    4:   <%= link_to_remove_association 'Remove', f, class: 'btn btn-danger' %>
+    5:   <br>
+  app/views/courses/_class_day_fields.html.erb:2:in `_app_views_courses__class_day_fields_html_erb__2046534928411604390_70163223570320'
+  app/views/courses/new.html.erb:17:in `block (2 levels) in _app_views_courses_new_html_erb___3558498106141985443_70163261443080'
+  app/views/courses/new.html.erb:16:in `block in _app_views_courses_new_html_erb___3558498106141985443_70163261443080'
+  app/views/courses/new.html.erb:3:in `_app_views_courses_new_html_erb___3558498106141985443_70163261443080'
+
+
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-4.2.9/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.9ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-4.2.9/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-4.2.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-4.2.9/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (94.5ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (87.2ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (200.4ms)
+
+
+Started GET "/courses/new" for ::1 at 2018-01-14 10:43:23 -0500
+Processing by CoursesController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered courses/_class_day_fields.html.erb (11.7ms)
+  Rendered courses/new.html.erb within layouts/application (16.5ms)
+Completed 401 Unauthorized in 26ms (ActiveRecord: 0.1ms)
+
+ActionView::Template::Error (Association class_day doesn't exist on ClassDay):
+    1: <div class="nested-fields class_day-tag-fields form-inline">
+    2:   <%= f.input :day_of_week, collection: 1..7 %>
+    3:   <%= link_to_add_association 'Add', f, :class_day, class: 'btn btn-primary' %>
+    4:   <%= link_to_remove_association 'Remove', f, class: 'btn btn-danger' %>
+    5:   <br>
+    6: </div>
+  app/views/courses/_class_day_fields.html.erb:3:in `_app_views_courses__class_day_fields_html_erb__2046534928411604390_70163217680840'
+  app/views/courses/new.html.erb:17:in `block (2 levels) in _app_views_courses_new_html_erb___3558498106141985443_70163261443080'
+  app/views/courses/new.html.erb:16:in `block in _app_views_courses_new_html_erb___3558498106141985443_70163261443080'
+  app/views/courses/new.html.erb:3:in `_app_views_courses_new_html_erb___3558498106141985443_70163261443080'
+
+
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-4.2.9/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.8ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-4.2.9/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-4.2.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-4.2.9/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (89.3ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (76.7ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (162.8ms)
+
+
+Started GET "/courses/new" for ::1 at 2018-01-14 10:44:49 -0500
+Processing by CoursesController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered courses/_class_day_fields.html.erb (3.1ms)
+  Rendered courses/_class_day_fields.html.erb (2.8ms)
+  Rendered courses/_holiday_fields.html.erb (13.8ms)
+  Rendered courses/_holiday_fields.html.erb (10.2ms)
+  Rendered courses/new.html.erb within layouts/application (42.0ms)
+Completed 200 OK in 171ms (Views: 168.2ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/courses" for ::1 at 2018-01-14 10:46:17 -0500
+Processing by CoursesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OAAKa4T0Zwfzp2aVYyxsjEronL8JH0kQU1OmkdlhmkoniZtDj4J94yE4HKwvvxtU57Iu7r7r9oYhJIVj3DNPxA==", "course"=>{"name"=>"Test with new model", "start_date"=>"2018/01/22", "end_date"=>"2018/03/28", "class_days_attributes"=>{"1515944719722"=>{"day_of_week"=>"1", "_destroy"=>"false"}, "1515944723869"=>{"day_of_week"=>"2", "_destroy"=>"false"}, "1515944727917"=>{"day_of_week"=>"3", "_destroy"=>"false"}, "0"=>{"day_of_week"=>"4", "_destroy"=>"false"}}, "holidays_attributes"=>{"0"=>{"name"=>"Easter", "class_date(1i)"=>"2018", "class_date(2i)"=>"3", "class_date(3i)"=>"1", "_destroy"=>"false"}}}, "commit"=>"Create Course"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Unpermitted parameters: start_date, end_date, class_days_attributes, holidays_attributes
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mCourse Exists (0.1ms)[0m  SELECT  1 AS one FROM "courses" WHERE "courses"."name" = 'Test with new model' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  Rendered courses/new.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 177ms (Views: 167.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/courses" for ::1 at 2018-01-14 10:51:39 -0500
+Processing by CoursesController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mCourse Load (0.2ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered courses/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 165ms (Views: 149.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for ::1 at 2018-01-14 10:51:44 -0500
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Processing by WelcomeController#dashboard as HTML
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "courses" WHERE "courses"."user_id" = ?  [["user_id", 1]]
+  Rendered welcome/dashboard.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 144ms (Views: 143.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/courses/new" for ::1 at 2018-01-14 10:51:47 -0500
+Processing by CoursesController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered courses/_class_day_fields.html.erb (2.1ms)
+  Rendered courses/_class_day_fields.html.erb (2.1ms)
+  Rendered courses/_holiday_fields.html.erb (4.6ms)
+  Rendered courses/_holiday_fields.html.erb (4.2ms)
+  Rendered courses/new.html.erb within layouts/application (23.2ms)
+Completed 200 OK in 173ms (Views: 158.6ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/courses" for ::1 at 2018-01-14 10:53:27 -0500
+Processing by CoursesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"aXwypxXswafxidG/sxXvyRUuqxbR7vVXCh1QcD5xluF29aOPHprbQyMWq4b/hpgRuHQZR2YaSsF4anOCOyNDbw==", "course"=>{"name"=>"Test revised params", "start_date"=>"2018/01/15", "end_date"=>"2018/04/30", "class_days_attributes"=>{"1515945137083"=>{"day_of_week"=>"2", "_destroy"=>"false"}, "1515945142311"=>{"day_of_week"=>"3", "_destroy"=>"false"}, "1515945146619"=>{"day_of_week"=>"4", "_destroy"=>"false"}, "0"=>{"day_of_week"=>"1", "_destroy"=>"false"}}, "holidays_attributes"=>{"0"=>{"name"=>"Easter", "class_date(1i)"=>"2018", "class_date(2i)"=>"3", "class_date(3i)"=>"6", "_destroy"=>"false"}}}, "commit"=>"Create Course"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Unpermitted parameter: _destroy
+Unpermitted parameter: _destroy
+Unpermitted parameter: _destroy
+Unpermitted parameter: _destroy
+Unpermitted parameter: _destroy
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mCourse Exists (0.1ms)[0m  SELECT  1 AS one FROM "courses" WHERE "courses"."name" = 'Test revised params' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "courses" ("name", "start_date", "end_date", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Test revised params"], ["start_date", "2018-01-15 00:00:00.000000"], ["end_date", "2018-04-30 00:00:00.000000"], ["user_id", 1], ["created_at", "2018-01-14 15:53:28.004079"], ["updated_at", "2018-01-14 15:53:28.004079"]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "holidays" ("name", "class_date", "course_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Easter"], ["class_date", "2018-03-06 00:00:00.000000"], ["course_id", 4], ["created_at", "2018-01-14 15:53:28.006018"], ["updated_at", "2018-01-14 15:53:28.006018"]]
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "class_days" ("day_of_week", "course_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["day_of_week", 2], ["course_id", 4], ["created_at", "2018-01-14 15:53:28.007574"], ["updated_at", "2018-01-14 15:53:28.007574"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "class_days" ("day_of_week", "course_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["day_of_week", 3], ["course_id", 4], ["created_at", "2018-01-14 15:53:28.008948"], ["updated_at", "2018-01-14 15:53:28.008948"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "class_days" ("day_of_week", "course_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["day_of_week", 4], ["course_id", 4], ["created_at", "2018-01-14 15:53:28.010296"], ["updated_at", "2018-01-14 15:53:28.010296"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "class_days" ("day_of_week", "course_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["day_of_week", 1], ["course_id", 4], ["created_at", "2018-01-14 15:53:28.011340"], ["updated_at", "2018-01-14 15:53:28.011340"]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 17ms (ActiveRecord: 2.6ms)
+
+
+Started GET "/" for ::1 at 2018-01-14 10:53:28 -0500
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Processing by WelcomeController#dashboard as HTML
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "courses" WHERE "courses"."user_id" = ?  [["user_id", 1]]
+  Rendered welcome/dashboard.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 171ms (Views: 170.7ms | ActiveRecord: 0.1ms)
+  [1m[36mCourse Load (10.2ms)[0m  [1mSELECT "courses".* FROM "courses"[0m
+  [1m[35mCourse Load (0.2ms)[0m  SELECT  "courses".* FROM "courses"  ORDER BY "courses"."id" DESC LIMIT 1
+  [1m[36mHoliday Load (0.2ms)[0m  [1mSELECT "holidays".* FROM "holidays" WHERE "holidays"."course_id" = ?[0m  [["course_id", 4]]
+  [1m[35mCourse Load (0.2ms)[0m  SELECT  "courses".* FROM "courses"  ORDER BY "courses"."id" DESC LIMIT 1
+  [1m[36mClassDay Load (0.1ms)[0m  [1mSELECT "class_days".* FROM "class_days" WHERE "class_days"."course_id" = ?[0m  [["course_id", 4]]
+
+
+Started GET "/" for ::1 at 2018-01-14 11:26:10 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Processing by WelcomeController#dashboard as HTML
+  [1m[36mCourse Load (0.2ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "courses" WHERE "courses"."user_id" = ?  [["user_id", 1]]
+  Rendered welcome/dashboard.html.erb within layouts/application (13.1ms)
+Completed 200 OK in 745ms (Views: 717.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/courses.self-42af359cea85db6ef393582715519b5260b670955286eb3dda0ccd8529045995.js?body=1" for ::1 at 2018-01-14 11:26:11 -0500
+
+
+Started GET "/courses/new" for ::1 at 2018-01-14 11:26:14 -0500
+Processing by CoursesController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered courses/_class_day_fields.html.erb (4.5ms)
+  Rendered courses/_class_day_fields.html.erb (3.3ms)
+  Rendered courses/_holiday_fields.html.erb (7.3ms)
+  Rendered courses/_holiday_fields.html.erb (4.3ms)
+  Rendered courses/new.html.erb within layouts/application (543.4ms)
+Completed 200 OK in 727ms (Views: 705.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for ::1 at 2018-01-14 11:29:29 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Processing by WelcomeController#dashboard as HTML
+  [1m[36mCourse Load (0.2ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "courses" WHERE "courses"."user_id" = ?  [["user_id", 1]]
+  Rendered welcome/dashboard.html.erb within layouts/application (10.4ms)
+Completed 200 OK in 738ms (Views: 715.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/courses.self-cc319a9c327cca3adb78aa38fc65f1110bca2e28f129edc694307b12436cee7d.js?body=1" for ::1 at 2018-01-14 11:29:30 -0500
+
+
+Started GET "/courses/new" for ::1 at 2018-01-14 11:29:32 -0500
+Processing by CoursesController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered courses/_class_day_fields.html.erb (5.3ms)
+  Rendered courses/_class_day_fields.html.erb (3.4ms)
+  Rendered courses/_holiday_fields.html.erb (6.6ms)
+  Rendered courses/_holiday_fields.html.erb (4.7ms)
+  Rendered courses/new.html.erb within layouts/application (409.7ms)
+Completed 200 OK in 594ms (Views: 575.3ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/courses" for ::1 at 2018-01-14 11:30:10 -0500
+Processing by CoursesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"c1oM8UNe3W1BcawOv9rWCLsnvg2mgk9HdBj5xgfgXfxs053ZSCjHiZPu1jfzSaHQFn0MXBF28NEGb9o0ArKIcg==", "course"=>{"name"=>"asdgaghadg", "start_date"=>"2018/01/15", "end_date"=>"2018/05/15", "class_days_attributes"=>{"0"=>{"day_of_week"=>"1", "_destroy"=>"false"}, "1515947377788"=>{"day_of_week"=>"3", "_destroy"=>"false"}}, "holidays_attributes"=>{"0"=>{"name"=>"ahfgjdhfj", "class_date(1i)"=>"2018", "class_date(2i)"=>"2", "class_date(3i)"=>"14", "_destroy"=>"false"}, "1515947387308"=>{"name"=>"adfasg", "class_date(1i)"=>"2018", "class_date(2i)"=>"3", "class_date(3i)"=>"10", "_destroy"=>"false"}}}, "commit"=>"Create Course"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Unpermitted parameter: _destroy
+Unpermitted parameter: _destroy
+Unpermitted parameter: _destroy
+Unpermitted parameter: _destroy
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mCourse Exists (0.1ms)[0m  SELECT  1 AS one FROM "courses" WHERE "courses"."name" = 'asdgaghadg' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "courses" ("name", "start_date", "end_date", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "asdgaghadg"], ["start_date", "2018-01-15 00:00:00.000000"], ["end_date", "2018-05-15 00:00:00.000000"], ["user_id", 1], ["created_at", "2018-01-14 16:30:10.603820"], ["updated_at", "2018-01-14 16:30:10.603820"]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "holidays" ("name", "class_date", "course_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "ahfgjdhfj"], ["class_date", "2018-02-14 00:00:00.000000"], ["course_id", 5], ["created_at", "2018-01-14 16:30:10.605773"], ["updated_at", "2018-01-14 16:30:10.605773"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "holidays" ("name", "class_date", "course_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "adfasg"], ["class_date", "2018-03-10 00:00:00.000000"], ["course_id", 5], ["created_at", "2018-01-14 16:30:10.607138"], ["updated_at", "2018-01-14 16:30:10.607138"]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "class_days" ("day_of_week", "course_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["day_of_week", 1], ["course_id", 5], ["created_at", "2018-01-14 16:30:10.608206"], ["updated_at", "2018-01-14 16:30:10.608206"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "class_days" ("day_of_week", "course_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["day_of_week", 3], ["course_id", 5], ["created_at", "2018-01-14 16:30:10.609538"], ["updated_at", "2018-01-14 16:30:10.609538"]]
+  [1m[35m (1.2ms)[0m  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 21ms (ActiveRecord: 2.6ms)
+
+
+Started GET "/" for ::1 at 2018-01-14 11:30:10 -0500
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Processing by WelcomeController#dashboard as HTML
+  [1m[35mCourse Load (0.1ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."user_id" = ?  [["user_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "courses" WHERE "courses"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered welcome/dashboard.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 160ms (Views: 159.7ms | ActiveRecord: 0.2ms)
+  [1m[36mCourse Load (0.2ms)[0m  [1mSELECT  "courses".* FROM "courses"  ORDER BY "courses"."id" DESC LIMIT 1[0m
+  [1m[35mHoliday Load (0.3ms)[0m  SELECT "holidays".* FROM "holidays" WHERE "holidays"."course_id" = ?  [["course_id", 5]]
+
+
+Started GET "/" for ::1 at 2018-01-14 11:32:45 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Processing by WelcomeController#dashboard as HTML
+  [1m[36mCourse Load (0.2ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "courses" WHERE "courses"."user_id" = ?  [["user_id", 1]]
+  Rendered welcome/dashboard.html.erb within layouts/application (10.3ms)
+Completed 200 OK in 736ms (Views: 716.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/courses.self-511a1945b1c979d06161bdfd0e04435368bb853a5f1a232bc2d4f130006a349b.js?body=1" for ::1 at 2018-01-14 11:32:45 -0500
+
+
+Started GET "/courses/new" for ::1 at 2018-01-14 11:32:47 -0500
+Processing by CoursesController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered courses/_class_day_fields.html.erb (3.8ms)
+  Rendered courses/_class_day_fields.html.erb (2.0ms)
+  Rendered courses/_holiday_fields.html.erb (2.4ms)
+  Rendered courses/_holiday_fields.html.erb (2.2ms)
+  Rendered courses/new.html.erb within layouts/application (405.3ms)
+Completed 200 OK in 567ms (Views: 551.8ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/courses" for ::1 at 2018-01-14 11:33:34 -0500
+Processing by CoursesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Z0q0nXfN1eeXaDSIXAPaG9VJiPafllqxvxuNvXVW0+94wyW1fLvPA0X3TrEQkK3DeBM6pyhi5SfNbK5PcAQGYQ==", "course"=>{"name"=>"kdjfkjaklgdjsakjg", "start_date"=>"2018/01/08", "end_date"=>"2018/04/11", "class_days_attributes"=>{"0"=>{"day_of_week"=>"2", "_destroy"=>"false"}, "1515947597615"=>{"day_of_week"=>"1", "_destroy"=>"false"}, "1515947602509"=>{"day_of_week"=>"3", "_destroy"=>"false"}}, "holidays_attributes"=>{"0"=>{"name"=>"XZ", "class_date"=>"2018/01/09", "_destroy"=>"false"}}}, "commit"=>"Create Course"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Unpermitted parameter: _destroy
+Unpermitted parameter: _destroy
+Unpermitted parameter: _destroy
+Unpermitted parameter: _destroy
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mCourse Exists (0.2ms)[0m  SELECT  1 AS one FROM "courses" WHERE "courses"."name" = 'kdjfkjaklgdjsakjg' LIMIT 1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "courses" ("name", "start_date", "end_date", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "kdjfkjaklgdjsakjg"], ["start_date", "2018-01-08 00:00:00.000000"], ["end_date", "2018-04-11 00:00:00.000000"], ["user_id", 1], ["created_at", "2018-01-14 16:33:34.228813"], ["updated_at", "2018-01-14 16:33:34.228813"]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "holidays" ("name", "class_date", "course_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "XZ"], ["class_date", "2018-01-09 00:00:00.000000"], ["course_id", 6], ["created_at", "2018-01-14 16:33:34.231043"], ["updated_at", "2018-01-14 16:33:34.231043"]]
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "class_days" ("day_of_week", "course_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["day_of_week", 2], ["course_id", 6], ["created_at", "2018-01-14 16:33:34.232946"], ["updated_at", "2018-01-14 16:33:34.232946"]]
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "class_days" ("day_of_week", "course_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["day_of_week", 1], ["course_id", 6], ["created_at", "2018-01-14 16:33:34.234243"], ["updated_at", "2018-01-14 16:33:34.234243"]]
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "class_days" ("day_of_week", "course_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["day_of_week", 3], ["course_id", 6], ["created_at", "2018-01-14 16:33:34.235373"], ["updated_at", "2018-01-14 16:33:34.235373"]]
+  [1m[35m (1.9ms)[0m  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 22ms (ActiveRecord: 3.5ms)
+
+
+Started GET "/" for ::1 at 2018-01-14 11:33:34 -0500
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Processing by WelcomeController#dashboard as HTML
+  [1m[35mCourse Load (0.1ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."user_id" = ?  [["user_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "courses" WHERE "courses"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered welcome/dashboard.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 170ms (Views: 169.2ms | ActiveRecord: 0.3ms)
+  [1m[36mCourse Load (0.2ms)[0m  [1mSELECT  "courses".* FROM "courses"  ORDER BY "courses"."id" DESC LIMIT 1[0m
+  [1m[35mHoliday Load (0.2ms)[0m  SELECT "holidays".* FROM "holidays" WHERE "holidays"."course_id" = ?  [["course_id", 6]]
+  [1m[36mCourse Load (0.2ms)[0m  [1mSELECT  "courses".* FROM "courses"  ORDER BY "courses"."id" DESC LIMIT 1[0m
+
+
+Started GET "/courses/new" for ::1 at 2018-01-14 11:35:11 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by CoursesController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered courses/_class_day_fields.html.erb (8.4ms)
+  Rendered courses/_class_day_fields.html.erb (5.4ms)
+  Rendered courses/_holiday_fields.html.erb (6.1ms)
+  Rendered courses/_holiday_fields.html.erb (4.5ms)
+  Rendered courses/new.html.erb within layouts/application (413.7ms)
+Completed 200 OK in 834ms (Views: 774.5ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/" for ::1 at 2018-01-14 11:42:52 -0500
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Processing by WelcomeController#dashboard as HTML
+  [1m[35mCourse Load (0.2ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."user_id" = ?  [["user_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "courses" WHERE "courses"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered welcome/dashboard.html.erb within layouts/application (8.2ms)
+Completed 200 OK in 174ms (Views: 172.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2018-01-14 11:42:54 -0500
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Processing by WelcomeController#dashboard as HTML
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "courses" WHERE "courses"."user_id" = ?  [["user_id", 1]]
+  Rendered welcome/dashboard.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 185ms (Views: 183.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/courses/new" for ::1 at 2018-01-14 11:42:56 -0500
+Processing by CoursesController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered courses/new.html.erb within layouts/application (1.5ms)
+Completed 401 Unauthorized in 15ms (ActiveRecord: 0.1ms)
+
+SyntaxError (/Users/scottl95/Code/gradeassist2/app/views/courses/new.html.erb:18: syntax error, unexpected keyword_class, expecting ')'
+ns: { wrapper: 'inline'} class: 'btn btn-success' );@output_
+                              ^):
+  app/views/courses/new.html.erb:18: syntax error, unexpected keyword_class, expecting ')'
+
+
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-4.2.9/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.0ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-4.2.9/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.1ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-4.2.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-4.2.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (94.7ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (78.7ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (184.6ms)
+
+
+Started GET "/courses/new" for ::1 at 2018-01-14 11:43:08 -0500
+Processing by CoursesController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered courses/_class_day_fields.html.erb (2.4ms)
+  Rendered courses/new.html.erb within layouts/application (9.8ms)
+Completed 401 Unauthorized in 19ms (ActiveRecord: 0.2ms)
+
+ActionView::Template::Error (Couldn't find wrapper with name inline):
+    15:             <%= f.simple_fields_for :class_days do |class_day| %>
+    16:               <%= render 'class_day_fields', f: class_day %>
+    17:               <div class="links">
+    18:                 <%= link_to_add_association 'Add', f, :class_days, render_options: { wrapper: 'inline'}, class: 'btn btn-success' %>
+    19:               </div>
+    20:             <% end %>
+    21:           </div>
+  app/views/courses/new.html.erb:18:in `block (2 levels) in _app_views_courses_new_html_erb___4231697240307942415_70221698541360'
+  app/views/courses/new.html.erb:15:in `block in _app_views_courses_new_html_erb___4231697240307942415_70221698541360'
+  app/views/courses/new.html.erb:3:in `_app_views_courses_new_html_erb___4231697240307942415_70221698541360'
+
+
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-4.2.9/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.0ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-4.2.9/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.7ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-4.2.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-4.2.9/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (89.3ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (72.1ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (160.0ms)
+
+
+Started GET "/courses/new" for ::1 at 2018-01-14 11:46:30 -0500
+Processing by CoursesController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered courses/_class_day_fields.html.erb (2.1ms)
+  Rendered courses/_class_day_fields.html.erb (2.0ms)
+  Rendered courses/_holiday_fields.html.erb (2.1ms)
+  Rendered courses/_holiday_fields.html.erb (1.9ms)
+  Rendered courses/new.html.erb within layouts/application (17.9ms)
+Completed 200 OK in 165ms (Views: 162.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/courses/new" for ::1 at 2018-01-14 12:00:04 -0500
+Processing by CoursesController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered courses/_class_day_fields.html.erb (1.8ms)
+  Rendered courses/_class_day_fields.html.erb (1.9ms)
+  Rendered courses/_holiday_fields.html.erb (1.8ms)
+  Rendered courses/_holiday_fields.html.erb (2.1ms)
+  Rendered courses/new.html.erb within layouts/application (17.2ms)
+Completed 200 OK in 171ms (Views: 168.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for ::1 at 2018-01-14 12:01:53 -0500
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Processing by WelcomeController#dashboard as HTML
+  [1m[35mCourse Load (0.2ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."user_id" = ?  [["user_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "courses" WHERE "courses"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered welcome/dashboard.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 165ms (Views: 163.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2018-01-14 12:01:53 -0500
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Processing by WelcomeController#dashboard as HTML
+  [1m[36mCourse Load (0.1ms)[0m  [1mSELECT "courses".* FROM "courses" WHERE "courses"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "courses" WHERE "courses"."user_id" = ?  [["user_id", 1]]
+  Rendered welcome/dashboard.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 182ms (Views: 181.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2018-01-14 12:01:55 -0500
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Processing by WelcomeController#dashboard as HTML
+  [1m[35mCourse Load (0.1ms)[0m  SELECT "courses".* FROM "courses" WHERE "courses"."user_id" = ?  [["user_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "courses" WHERE "courses"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered welcome/dashboard.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 152ms (Views: 151.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/courses/new" for ::1 at 2018-01-14 12:01:57 -0500
+Processing by CoursesController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered courses/_class_day_fields.html.erb (1.9ms)
+  Rendered courses/_class_day_fields.html.erb (2.0ms)
+  Rendered courses/_holiday_fields.html.erb (2.0ms)
+  Rendered courses/_holiday_fields.html.erb (1.9ms)
+  Rendered courses/new.html.erb within layouts/application (18.4ms)
+Completed 200 OK in 137ms (Views: 134.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/courses/new" for ::1 at 2018-01-14 12:02:39 -0500
+Processing by CoursesController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered courses/_class_day_fields.html.erb (1.9ms)
+  Rendered courses/_class_day_fields.html.erb (2.4ms)
+  Rendered courses/_holiday_fields.html.erb (2.3ms)
+  Rendered courses/_holiday_fields.html.erb (2.5ms)
+  Rendered courses/new.html.erb within layouts/application (19.7ms)
+Completed 200 OK in 145ms (Views: 141.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/courses/new" for ::1 at 2018-01-14 12:08:33 -0500
+Processing by CoursesController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered courses/new.html.erb within layouts/application (0.8ms)
+Completed 401 Unauthorized in 10ms (ActiveRecord: 0.1ms)
+
+SyntaxError (/Users/scottl95/Code/gradeassist2/app/views/courses/new.html.erb:19: syntax error, unexpected keyword_class, expecting ')'
+_options: { wrapper: ''} class: 'btn btn-success' );@output_
+                              ^):
+  app/views/courses/new.html.erb:19: syntax error, unexpected keyword_class, expecting ')'
+
+
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-4.2.9/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.0ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-4.2.9/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-4.2.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-4.2.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (80.5ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (80.2ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/scottl95/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (170.7ms)
+
+
+Started GET "/courses/new" for ::1 at 2018-01-14 12:08:52 -0500
+Processing by CoursesController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered courses/_class_day_fields.html.erb (2.0ms)
+  Rendered courses/_class_day_fields.html.erb (2.0ms)
+  Rendered courses/_holiday_fields.html.erb (1.9ms)
+  Rendered courses/_holiday_fields.html.erb (2.4ms)
+  Rendered courses/new.html.erb within layouts/application (18.0ms)
+Completed 200 OK in 154ms (Views: 151.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/courses/new" for ::1 at 2018-01-14 12:13:46 -0500
+Processing by CoursesController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered courses/_class_day_fields.html.erb (2.4ms)
+  Rendered courses/_class_day_fields.html.erb (2.4ms)
+  Rendered courses/_holiday_fields.html.erb (2.2ms)
+  Rendered courses/_holiday_fields.html.erb (2.4ms)
+  Rendered courses/new.html.erb within layouts/application (22.0ms)
+Completed 200 OK in 185ms (Views: 182.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/courses/new" for ::1 at 2018-01-14 12:14:20 -0500
+Processing by CoursesController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered courses/_class_day_fields.html.erb (2.3ms)
+  Rendered courses/_class_day_fields.html.erb (2.0ms)
+  Rendered courses/_holiday_fields.html.erb (2.4ms)
+  Rendered courses/_holiday_fields.html.erb (2.0ms)
+  Rendered courses/new.html.erb within layouts/application (18.9ms)
+Completed 200 OK in 170ms (Views: 168.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/courses/new" for ::1 at 2018-01-14 12:15:26 -0500
+Processing by CoursesController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered courses/_class_day_fields.html.erb (2.4ms)
+  Rendered courses/_class_day_fields.html.erb (2.1ms)
+  Rendered courses/_holiday_fields.html.erb (2.3ms)
+  Rendered courses/_holiday_fields.html.erb (2.3ms)
+  Rendered courses/new.html.erb within layouts/application (19.5ms)
+Completed 200 OK in 174ms (Views: 171.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/courses/new" for ::1 at 2018-01-14 12:16:20 -0500
+Processing by CoursesController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered courses/_class_day_fields.html.erb (2.5ms)
+  Rendered courses/_class_day_fields.html.erb (2.0ms)
+  Rendered courses/_holiday_fields.html.erb (2.4ms)
+  Rendered courses/_holiday_fields.html.erb (2.0ms)
+  Rendered courses/new.html.erb within layouts/application (18.7ms)
+Completed 200 OK in 173ms (Views: 170.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/courses/new" for ::1 at 2018-01-14 12:17:52 -0500
+Processing by CoursesController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered courses/_class_day_fields.html.erb (3.1ms)
+  Rendered courses/_class_day_fields.html.erb (2.6ms)
+  Rendered courses/_holiday_fields.html.erb (2.5ms)
+  Rendered courses/_holiday_fields.html.erb (2.2ms)
+  Rendered courses/new.html.erb within layouts/application (21.7ms)
+Completed 200 OK in 171ms (Views: 168.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/courses/new" for ::1 at 2018-01-14 12:18:06 -0500
+Processing by CoursesController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered courses/_class_day_fields.html.erb (1.9ms)
+  Rendered courses/_class_day_fields.html.erb (1.9ms)
+  Rendered courses/_holiday_fields.html.erb (1.9ms)
+  Rendered courses/_holiday_fields.html.erb (1.9ms)
+  Rendered courses/new.html.erb within layouts/application (22.5ms)
+Completed 200 OK in 174ms (Views: 172.1ms | ActiveRecord: 0.1ms)

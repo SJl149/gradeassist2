@@ -16,7 +16,8 @@ class CoursesController < ApplicationController
 
   def new
     @course = Course.new
-    @course.semesters.build
+    @course.class_days.build
+    @course.holidays.build
   end
 
   def create
@@ -64,10 +65,9 @@ class CoursesController < ApplicationController
 
   def course_params
     params.require(:course).permit(
-      :name,
-      semesters_attributes: [:id, :name, :start_date, :end_date, :course_id,
-        class_days_attributes: [:id, :day_of_week, :semester_id],
-        holidays_attributes: [:id, :name, :class_date, :semester_id]
-      ])
+      :name, :start_date, :end_date, :user_id,
+        class_days_attributes: [:id, :day_of_week, :course_id],
+        holidays_attributes: [:id, :name, :class_date, :course_id]
+    )
   end
 end

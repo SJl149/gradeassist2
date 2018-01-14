@@ -3,33 +3,33 @@
 <%= simple_form_for @course do |f| %>
   <div class="row">
     <div class="col-md-12">
-      <div class="row">
-        <div class="col-md-6">
-          <%= f.input :name %>
-          <p><strong>Dates</strong></p>
-          <div id="dates">
-            <%= f.simple_fields_for :semesters do |semester| %>
-              <%= semester.label :start_date %><br>
-              <%= semester.text_field :start_date, data:{ provide:'datepicker' }, class: 'small-text-field course-datepicker' %><br>
-              <%= semester.label :end_date %><br>
-              <%= semester.text_field :end_date, data:{ provide:'datepicker' }, class: 'small-text-field course-datepicker' %><br>
-              <div id="class_days">
-                <p>Class Days</p>
-                <%= semester.simple_fields_for :class_days do |class_day| %>
-                  <%= render 'class_day_fields', f: class_day %>
-                  <%= link_to_add_association 'Add', f, :class_days, class: 'btn btn-success' %>
-                <% end %>
-              </div>
-              <div id="holidays">
-                <p>Holidays</p>
-                <%= semester.simple_fields_for :holidays do |holiday| %>
-                  <%= render 'holiday_fields', f: holiday %>
-                  <%= link_to_add_association 'Add', f, :holidays, class: 'btn btn-success' %>
-                <% end %>
-              </div>
-            <% end %>
-          </div>
+      <div class="form-group">
+        <%= f.input :name %>
+        <%= f.label :start_date %><br>
+        <%= f.text_field :start_date, data:{ provide:'datepicker' }, class: 'small-text-field course-datepicker' %><br>
+        <%= f.label :end_date %><br>
+        <%= f.text_field :end_date, data:{ provide:'datepicker' }, class: 'small-text-field course-datepicker' %>
+      </div>
+      <div class="form-group">
+        <h3>Class Days</h3>
+        <div id="class_days">
+          <%= f.simple_fields_for :class_days do |class_day| %>
+            <%= render 'class_day_fields', f: class_day %>
+            <div class="links">
+              <%= link_to_add_association 'Add', f, :class_days, class: 'btn btn-success' %>
+            </div>
+          <% end %>
         </div>
+      </div>
+      <div class="form-group">
+        <h3>Holidays</h3>
+        <div id="holidays">
+          <%= f.simple_fields_for :holidays do |holiday| %>
+            <%= render 'holiday_fields', f: holiday %>
+            <%= link_to_add_association 'Add', f, :holidays, class: 'btn btn-success' %>
+          <% end %>
+        </div>
+      </div>
       </div>
       <div class="row">
         <div class="col-md-2 col-md-offset-8">
