@@ -11,16 +11,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180113192707) do
+ActiveRecord::Schema.define(version: 20180114150210) do
+
+  create_table "class_days", force: :cascade do |t|
+    t.integer  "day_of_week"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "course_id"
+  end
+
+  add_index "class_days", ["course_id"], name: "index_class_days_on_course_id"
 
   create_table "courses", force: :cascade do |t|
     t.string   "name"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "start_date"
+    t.datetime "end_date"
   end
 
   add_index "courses", ["user_id"], name: "index_courses_on_user_id"
+
+  create_table "holidays", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "class_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "course_id"
+  end
+
+  add_index "holidays", ["course_id"], name: "index_holidays_on_course_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

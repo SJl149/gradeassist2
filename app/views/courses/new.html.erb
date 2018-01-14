@@ -1,22 +1,29 @@
 <h2>New Class</h2>
-<!-- <hr>
-<%= simple_form_for @course do |f| %>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="row">
-        <div class="col-md-6">
-          <%= f.input :name %>
-          <%= f.label :start_date %><br>
-          <%= f.text_field :start_date, data:{ provide:'datepicker' }, class: 'small-text-field course-datepicker' %><br>
-          <%= f.label :end_date %><br>
-          <%= f.text_field :end_date, data:{ provide:'datepicker' }, class: 'small-text-field course-datepicker' %><br>
-          <p><strong>Students</strong></p>
-          <div id="students">
-            <%= f.simple_fields_for :enrollments do |enrollment| %>
-              <%= render 'enrollment_fields', f: enrollment %>
-              <%= link_to_add_association 'Add', f, :enrollments, class: 'btn btn-success' %>
-            <% end %>
-          </div>
+<hr>
+<div class="course-form">
+  <%= simple_form_for @course do |f| %>
+    <div class="row">
+      <div class="col-md-12">
+        <%= f.input :name %>
+        <%= f.label :start_date %><br>
+        <%= f.text_field :start_date, data:{ provide:'datepicker' }, class: 'small-text-field course-datepicker' %><br>
+        <%= f.label :end_date %><br>
+        <%= f.text_field :end_date, data:{ provide:'datepicker' }, class: 'small-text-field course-datepicker' %>
+        <h3>Class Days</h3>
+        <div id="class_days">
+          <%= f.simple_fields_for :class_days do |class_day| %>
+            <%= render 'class_day_fields', f: class_day %>
+            <div class="links">
+              <%= link_to_add_association 'Add', f, :class_days, class: 'btn btn-success' %>
+            </div>
+          <% end %>
+        </div>
+        <h3>Holidays</h3>
+        <div id="holidays">
+          <%= f.simple_fields_for :holidays do |holiday| %>
+            <%= render 'holiday_fields', f: holiday %>
+            <%= link_to_add_association 'Add', f, :holidays, class: 'btn btn-success' %>
+          <% end %>
         </div>
       </div>
       <div class="row">
@@ -25,5 +32,5 @@
         </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>

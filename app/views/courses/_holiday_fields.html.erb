@@ -1,0 +1,5 @@
+<div class="nested-fields holiday-tag-fields form-inline">
+  <%= f.input :name %>
+  <%= f.text_field :class_date, data:{ provide:'datepicker' }, class: 'small-text-field course-datepicker' %>
+  <%= link_to_remove_association 'Remove', f, class: 'btn btn-danger' %>
+</div>
