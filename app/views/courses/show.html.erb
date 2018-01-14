@@ -18,19 +18,7 @@
       </tr>
     </thead>
     <tbody>
-<!--      <% @students.each do |student| %>
-        <% @student_daily_grades = student.semesters.find_by(name: @semester).daily_grades %>
-        <tr>
-          <td><%= link_to student.nickname, student %></td>
-          <td><%= student.family_name %>, <%= student.given_name %></td>
-          <td>A: <%= @student_daily_grades.where(attendance: 2).count %> | L: <%= @student_daily_grades.where(attendance: 1).count %></td>
-          <td><%= @student_daily_grades.average(:participation).to_i %>%</td>
-          <td><%= @student_daily_grades.average(:homework).to_i %>%</td>
-          <td><%= @student_daily_grades.average(:quiz).to_i %>%</td>
-          <td><%= @student_daily_grades.average(:exam).to_i %>%</td>
-          <td><% if @student_daily_grades.where.not(comment: [nil, ""]).any? %><span class="glyphicon glyphicon-ok" aria-hidden="true"> </span><% end %></td>
-        </tr>
-      <% end %>  -->
+
     </tbody>
   </table>
 </div>

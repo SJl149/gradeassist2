@@ -24,7 +24,6 @@ class CoursesController < ApplicationController
     @course = current_user.courses.new(course_params)
 
     if @course.save
-    #  CreateStudentDailygrades.new(@course, current_user).call
       flash[:notice] = "Course was created successfully."
       redirect_to root_path
     else
@@ -66,8 +65,8 @@ class CoursesController < ApplicationController
   def course_params
     params.require(:course).permit(
       :name, :start_date, :end_date, :user_id,
-        class_days_attributes: [:id, :day_of_week, :course_id],
-        holidays_attributes: [:id, :name, :class_date, :course_id]
+        class_days_attributes: [:id, :_destroy, :day_of_week, :course_id],
+        holidays_attributes: [:id, :_destroy, :name, :class_date, :course_id]
     )
   end
 end
