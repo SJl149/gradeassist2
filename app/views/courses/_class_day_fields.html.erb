@@ -1,5 +1,5 @@
 <div class="nested-fields class_day-tag-fields form-inline">
-  <%= f.input :day_of_week, collection: 1..7 %>
+  <%= f.input :day_of_week, collection: ClassDay.day_of_weeks.keys %>
   <%= link_to_remove_association 'Remove', f, class: 'btn btn-danger' %>
   <br>
 </div>
