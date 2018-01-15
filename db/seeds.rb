@@ -1,5 +1,8 @@
 User.destroy_all
 Course.destroy_all
+Holiday.destroy_all
+ClassDay.destroy_all
+Category.destroy_all
 
 # Create Users
 user1 = User.new(
@@ -23,14 +26,59 @@ user2.save!
 # Create Courses
 course1 = Course.create(
   name: 'Toefl Fall 2017',
+  start_date: 10.days.ago.to_date,
+  end_date: 3.months.from_now.to_date,
   user: user1
 )
 
 course2 = Course.create(
   name: 'Intro Fall 2017',
+  start_date: 10.days.ago.to_date,
+  end_date: 3.months.from_now.to_date,
   user: user1
 )
+
+# Create Holidays
+holiday1 = Holiday.create(
+  name: 'Valentine\'s Day',
+  class_date: DateTime.new(2018,2,14),
+  course: course1
+)
+holiday2 = Holiday.create(
+  name: 'Groundhog\'s Day',
+  class_date: DateTime.new(2018,2,2),
+  course: course2
+)
+
+# Create ClassDays
+[1,2,3,4].each do |day|
+  ClassDay.create(
+    day_of_week: day,
+    course: course1
+  )
+  ClassDay.create(
+    day_of_week: day,
+    course: course2
+  )
+end
+
+# Create Categories
+['HW', 'Participation', 'Quizzes', 'Exam'].each do |cat_name|
+  course1_categories = Category.create(
+                         name: cat_name,
+                         weight: 25,
+                         course: course1
+                       )
+  course2_categories = Category.create(
+                        name: cat_name,
+                        weight: 25,
+                        course: course2
+                      )
+end
 
 puts "Seeds finshed"
 puts "#{User.count} users created"
 puts "#{Course.count} courses created"
+puts "#{Holiday.count} holidays created"
+puts "#{ClassDay.count} class_days created"
+puts "#{Category.count} categories created"
