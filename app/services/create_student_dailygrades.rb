@@ -5,35 +5,23 @@ class CreateStudentDailygrades
   end
 
   def call
-    grade_categories = create_categories
-    course_schedule = set_schedule
-
-    create_grades_attendance(grade_categories, course_schedule)
-  end
-
-  private
-
-  def create_categories
-    course_categories = @course.categories
+    # Create grade_categories
     grade_categories = []
-    course_categories.each do |category|
+    @course.categories.each do |category|
       grade_categories << GradeCategory.create(
                      student: @student,
                      name: category.name,
                      weight: category.weight
       )
     end
-    grade_categories
-  end
 
-  def set_schedule
+    # Set schedule
     start_date = @course.start_date.to_date
     end_date = @course.end_date.to_date
     class_days = []
     @course.class_days.each do |class_day|
-      class_days << class_day.day_of_week.to_i
+      class_days << class_day[:day_of_week]
     end
-
     holidays = []
     @course.holidays.each do |holiday|
       holidays << holiday.class_date.to_date
@@ -45,10 +33,8 @@ class CreateStudentDailygrades
         course_schedule << cal_date
       end
     end
-    course_schedule
-  end
 
-  def create_grades_attendance(grade_categories, course_schedule)
+    # Create daily_grades and attendances
     course_schedule.each do |classdate|
       grade_categories.each do |grade_category|
         DailyGrade.create(
@@ -62,4 +48,5 @@ class CreateStudentDailygrades
       )
     end
   end
+
 end
