@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   resources :class_days
   resources :categories
   resources :students
+  resources :comments
+  resources :attendances
+  resources :grade_categories
+  resources :daily_grades
 
   authenticated :user do
     root 'welcome#dashboard', as: :authenticate_root

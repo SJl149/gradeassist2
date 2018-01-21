@@ -6,6 +6,9 @@ class Student < ActiveRecord::Base
 
   before_save :assign_nickname
 
+  accepts_nested_attributes_for :grade_categories, allow_destroy: true
+  accepts_nested_attributes_for :attendances, allow_destroy: true
+
   validates :family_name, presence: true
   validates :given_name, presence: true
   validates :course_id, presence: true

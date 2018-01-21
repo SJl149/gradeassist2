@@ -14,8 +14,10 @@ class StudentsController < ApplicationController
 
   def create
     @student = Student.new(student_params)
+    @course = Course.find(@student.course_id)
 
     if @student.save
+      CreateStudentDailygrades.new(@student, @course).call
       flash[:notice] = "Student was saved successfully."
       redirect_to students_path
     else
