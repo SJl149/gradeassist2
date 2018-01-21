@@ -18,7 +18,18 @@
       </tr>
     </thead>
     <tbody>
-
+      <% @students.each do |student| %>
+        <tr>
+          <td><%= link_to student.nickname, student %></td>
+          <td><%= student.family_name %>, <%= student.given_name %></td>
+          <td>A: 0 | L: 1</td>
+          <td>85%</td>
+          <td>90%</td>
+          <td>80%</td>
+          <td>93%</td>
+          <td><span class="glyphicon glyphicon-ok" aria-hidden="true"> </span></td>
+        </tr>
+      <% end %>
     </tbody>
   </table>
 </div>

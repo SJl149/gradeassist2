@@ -30,7 +30,13 @@
             <h3><%= link_to "All Classes", courses_path %> <span class="badge"><%= @courses.count %></span></h3>
           </div>
           <div class="col-md-3">
+            <h3><%= link_to "Students", students_path %> <span class="badge"><%= @students.count %></span></h3>
+          </div>
+          <div class="col-md-3">
             <h3><%= link_to "Create Class", new_course_path %></h3>
+          </div>
+          <div class="col-md-3">
+            <h3><%= link_to "Create Student", new_student_path %></h3>
           </div>
         </div>
       </div>

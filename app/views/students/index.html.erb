@@ -1,0 +1,28 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <h1 class="text-center">Students</h1>
+    <br>
+    <table class="table table-striped table-hover">
+      <thead>
+        <th>Student</th>
+        <th>Name</th>
+        <th>Email Address</th>
+        <th>Course</th>
+        <th></th>
+        <th></th>
+      </thead>
+      <tbody>
+        <% @students.each do |student| %>
+          <tr>
+            <td><%= link_to student.nickname, student %></td>
+            <td><%= student.family_name %>, <%= student.given_name %></td>
+            <td><%= student.email %></td>
+            <td><%= student.course.name %></td>
+            <td><%= link_to "Edit", edit_student_path(student), class: "btn btn-default btn-warning" %></td>
+            <td><%= link_to "Delete", student, method: :delete, data: {confirm: "Are you sure you want to delete this student?"}, class: "btn btn-default btn-danger" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

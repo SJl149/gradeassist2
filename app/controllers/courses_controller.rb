@@ -1,8 +1,7 @@
 class CoursesController < ApplicationController
   def show
     @course = Course.find(params[:id])
-    #@semester = @course.name
-    #@students = @course.students.order(:family_name)
+    @students = @course.students.order(:family_name)
 
     #respond_to do |format|
     #  format.html

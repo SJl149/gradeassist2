@@ -3,6 +3,7 @@ Course.destroy_all
 Holiday.destroy_all
 ClassDay.destroy_all
 Category.destroy_all
+Student.destroy_all
 
 # Create Users
 user1 = User.new(
@@ -76,9 +77,26 @@ end
                       )
 end
 
+# Create Students
+for i in 1..30 do
+  i.odd? ? course = course1 : course = course2
+  given_name = Faker::Name.unique.first_name
+  student = Student.new(
+    given_name: given_name,
+    family_name: Faker::Name.unique.last_name,
+    nickname: Faker::Ancient.hero + Faker::Number.digit,
+    email: Faker::Internet.free_email(given_name),
+    course: course
+  )
+  student.save!
+end
+students_group1 = Student.first(15)
+students_group2 = Student.all - students_group1
+
 puts "Seeds finshed"
 puts "#{User.count} users created"
 puts "#{Course.count} courses created"
 puts "#{Holiday.count} holidays created"
 puts "#{ClassDay.count} class_days created"
 puts "#{Category.count} categories created"
+puts "#{Student.count} students created"
