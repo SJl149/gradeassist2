@@ -3,6 +3,7 @@ class WelcomeController < ApplicationController
 
   def dashboard
     @courses = current_user.courses
+    @students = Student.where(course: @courses)
   end
 
   def index

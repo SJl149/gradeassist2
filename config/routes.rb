@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :holidays
   resources :class_days
   resources :categories
+  resources :students
 
   authenticated :user do
     root 'welcome#dashboard', as: :authenticate_root

@@ -1,0 +1,8 @@
+<%= simple_form_for @student do |f| %>
+  <%= f.association :course, label_method: :name %>
+  <%= f.input :given_name %>
+  <%= f.input :family_name %>
+  <%= f.input :nickname %>
+  <%= f.input :email %>
+  <%= f.button :submit, class: 'btn btn-info' %>
+<% end %>
