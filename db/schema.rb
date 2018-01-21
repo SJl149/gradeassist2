@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180120210027) do
+ActiveRecord::Schema.define(version: 20180121144103) do
+
+  create_table "attendances", force: :cascade do |t|
+    t.datetime "class_date"
+    t.integer  "status"
+    t.integer  "student_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "attendances", ["student_id"], name: "index_attendances_on_student_id"
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -33,6 +43,16 @@ ActiveRecord::Schema.define(version: 20180120210027) do
 
   add_index "class_days", ["course_id"], name: "index_class_days_on_course_id"
 
+  create_table "comments", force: :cascade do |t|
+    t.string   "content"
+    t.datetime "class_date"
+    t.integer  "student_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "comments", ["student_id"], name: "index_comments_on_student_id"
+
   create_table "courses", force: :cascade do |t|
     t.string   "name"
     t.integer  "user_id"
@@ -43,6 +63,26 @@ ActiveRecord::Schema.define(version: 20180120210027) do
   end
 
   add_index "courses", ["user_id"], name: "index_courses_on_user_id"
+
+  create_table "daily_grades", force: :cascade do |t|
+    t.integer  "grade"
+    t.datetime "class_date"
+    t.integer  "grade_category_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "daily_grades", ["grade_category_id"], name: "index_daily_grades_on_grade_category_id"
+
+  create_table "grade_categories", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "weight"
+    t.integer  "student_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "grade_categories", ["student_id"], name: "index_grade_categories_on_student_id"
 
   create_table "holidays", force: :cascade do |t|
     t.string   "name"

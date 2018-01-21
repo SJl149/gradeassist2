@@ -1,5 +1,8 @@
 class Student < ActiveRecord::Base
   belongs_to :course
+  has_many :grade_categories
+  has_many :attendances
+  has_many :comments
 
   before_save :assign_nickname
 
