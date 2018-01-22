@@ -4,6 +4,7 @@ Holiday.destroy_all
 ClassDay.destroy_all
 Category.destroy_all
 Student.destroy_all
+Attendance.destroy_all
 
 # Create Users
 user1 = User.new(
@@ -28,14 +29,14 @@ user2.save!
 course1 = Course.create(
   name: 'Toefl Fall 2017',
   start_date: 10.days.ago.to_date,
-  end_date: 3.months.from_now.to_date,
+  end_date: 2.months.from_now.to_date,
   user: user1
 )
 
 course2 = Course.create(
   name: 'Intro Fall 2017',
   start_date: 10.days.ago.to_date,
-  end_date: 3.months.from_now.to_date,
+  end_date: 2.months.from_now.to_date,
   user: user1
 )
 
@@ -93,6 +94,29 @@ end
 students_group1 = Student.first(15)
 students_group2 = Student.all - students_group1
 
+# Create attendance records
+start_date = 10.days.ago.to_date
+end_date = 2.months.from_now.to_date
+class_days = [1,2,3,4]
+course_schedule = []
+(start_date..end_date).each do |cal_date|
+  if class_days.include?(cal_date.wday)
+    course_schedule << cal_date
+  end
+end
+
+students = students_group1 + students_group2
+course_schedule.each do |class_date|
+  students.each_with_index do |student, i|
+    Attendance.create(
+      class_date: class_date,
+      student: student
+    )
+  end
+end
+
+
+
 puts "Seeds finshed"
 puts "#{User.count} users created"
 puts "#{Course.count} courses created"
@@ -100,3 +124,4 @@ puts "#{Holiday.count} holidays created"
 puts "#{ClassDay.count} class_days created"
 puts "#{Category.count} categories created"
 puts "#{Student.count} students created"
+puts "#{Attendance.count} attendance records created"

@@ -8,7 +8,6 @@ class AttendancesController < ApplicationController
   end
 
   def update
-    @course = Course.find(params[:course_id])
     @student = Student.find(params[:student_id])
     date = params[:date].to_date
     @attendance = @student.attendances.find_by(class_date: date.beginning_of_day..date.end_of_day)

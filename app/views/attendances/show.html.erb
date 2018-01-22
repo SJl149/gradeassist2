@@ -23,11 +23,11 @@
         <%= content_tag :div, id: "start_end_dates", data: { start_date: @course.start_date.to_date, end_date: @course.end_date.to_date } do %>
         <% end %>
         <% @students.each do |student| %>
-          <% @student_attendance = student.attendances.find_by(class_date: @attendance_date) %>
+          <% @student_attendance = student.attendances.for_date(@attendance_date) %>
           <tr>
             <td><%= student.nickname %></td>
             <td id="student_<%= student.id %>"><span class="label label-<%= attendance_label(@student_attendance.status) %>" ><%= @student_attendance.status %></span></td>
-            <td><%= link_to 'Present', attendance_path(student_id: student, course_id: @course.id, date: @attendance_date, attendance: { status: :present}), remote: true, method: :patch, class: "btn btn-success" %></td>
+            <td><%= link_to 'Present', attendance_path(student_id: student, date: @attendance_date, attendance: { status: :present}), remote: true, method: :patch, class: "btn btn-success" %></td>
             <td><%= link_to 'Late', attendance_path(student_id: student, course_id: @course.id, date: @attendance_date, attendance: { status: :late}), remote: true, method: :patch, class: "btn btn-warning" %></td>
             <td><%= link_to 'Absent', attendance_path(student_id: student, course_id: @course.id, date: @attendance_date, attendance: { status: :absent}), remote: true, method: :patch, class: "btn btn-danger" %></td>
             <td></td>
