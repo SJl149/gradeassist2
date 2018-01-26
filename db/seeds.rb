@@ -28,15 +28,15 @@ user2.save!
 # Create Courses
 course1 = Course.create(
   name: 'Toefl Fall 2017',
-  start_date: 10.days.ago.to_date,
-  end_date: 2.months.from_now.to_date,
+  start_date: DateTime.new(2018,1,15),
+  end_date: DateTime.new(2018,3,15),
   user: user1
 )
 
 course2 = Course.create(
   name: 'Intro Fall 2017',
-  start_date: 10.days.ago.to_date,
-  end_date: 2.months.from_now.to_date,
+  start_date: DateTime.new(2018,1,15),
+  end_date: DateTime.new(2018,3,15),
   user: user1
 )
 
@@ -95,8 +95,8 @@ students_group1 = Student.first(15)
 students_group2 = Student.all - students_group1
 
 # Create attendance records
-start_date = 10.days.ago.to_date
-end_date = 2.months.from_now.to_date
+start_date = course1.start_date.to_date
+end_date = course1.end_date.to_date
 class_days = [1,2,3,4]
 course_schedule = []
 (start_date..end_date).each do |cal_date|
