@@ -31,7 +31,7 @@ class AttendancesController < ApplicationController
     date_selection = Date.today.to_date
 
     if date_selection >= @course.start_date.to_date && date_selection <= @course.end_date.to_date
-      while class_days.exclude?(date_selection.wday) && holidays.include?(date_selection)
+      while class_days.exclude?(date_selection.wday) || holidays.include?(date_selection)
         date_selection = date_selection.next_day(1)
       end
       date_selection
