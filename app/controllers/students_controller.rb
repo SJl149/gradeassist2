@@ -1,6 +1,8 @@
 class StudentsController < ApplicationController
   def show
     @student = Student.find(params[:id])
+    @lates = @student.attendances.where(status: 1)
+    @absences = @student.attendances.where(status: 2)
     @course = @student.course
   end
 
