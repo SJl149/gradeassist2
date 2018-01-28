@@ -94,7 +94,7 @@ end
 students_group1 = Student.first(15)
 students_group2 = Student.all - students_group1
 
-# Create attendance records
+# Create Attendances
 start_date = course1.start_date.to_date
 end_date = course1.end_date.to_date
 class_days = [1,2,3,4]
