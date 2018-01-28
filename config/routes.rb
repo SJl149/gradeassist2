@@ -4,14 +4,13 @@ Rails.application.routes.draw do
 
   get 'about' => 'welcome#about'
   resources :courses
-  resources :holidays
-  resources :class_days
-  resources :categories
   resources :students
   resources :comments
   get 'attendance' => 'attendances#show'
   patch 'attendance' => 'attendances#update'
   resources :daily_grades
+  get 'submit_grades' => 'daily_grades#submit_grades'
+  post 'create_grades' => 'daily_grades#create_grades'
 
   authenticated :user do
     root 'welcome#dashboard', as: :authenticate_root

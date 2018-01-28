@@ -1,0 +1,40 @@
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <h3 class="panel-title text-center">Homework: <%= @course.name %></h3>
+
+  </div>
+  <div class="panel-body table-responsive">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Students</th>
+          <th>Full Name</th>
+          <th>Category</th>
+          <th>Comments</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= form_tag create_grades_path(method: :post) do  %>
+          <%= label_tag :date, 'Select a date' %>
+          <%= text_field_tag :date, @daily_grades_date, class: 'form-control small-text-field grade-datepicker' %>
+          <%= label_tag :category_name, 'Select a Category' %>
+          <%= select_tag(:category_name, options_for_select(@categories)) %>
+          <% @student_daily_grades.each_with_index do |daily_grade, i| %>
+            <% student = Student.find(daily_grade.student_id) %>
+            <tr>
+              <td><%= student.nickname %></td>
+              <td><%= student.family_name %>, <%= student.given_name %></td>
+              <td>
+                <%= fields_for 'student_daily_grades[]', daily_grade, include_id: false do |dg| %>
+                  <%= dg.number_field :grade, name: 'student_grades[' + @student_daily_grades.index(daily_grade).to_s + '][grade]' %>
+                <% end %>
+              </td>
+              <td></td>
+            </tr>
+          <% end %>
+          <%= submit_tag 'Submit Grades', class: 'btn btn-info' %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
