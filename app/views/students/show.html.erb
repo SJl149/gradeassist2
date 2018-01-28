@@ -22,12 +22,15 @@
           </div>
           <div class="col-md-4">
             <h3 class="text-danger">Absences</h3>
-            <p>1/22 Mon</p>
-            <p>1/25 Wed</p>
+            <% @absences.each do |absence| %>
+              <p><%= absence.class_date.strftime("%m/%d %a") %></p>
+            <% end %>
           </div>
           <div class="col-md-3">
             <h3 class="text-warning">Lates</h3>
-            <p>1/15 Thur</p>
+            <% @lates.each do |late| %>
+              <p><%= late.class_date.strftime("%m/%d %a") %></p>
+            <% end %>
           </div>
         </div>
       </div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180121144103) do
+ActiveRecord::Schema.define(version: 20180128163736) do
 
   create_table "attendances", force: :cascade do |t|
     t.datetime "class_date"
@@ -25,11 +25,10 @@ ActiveRecord::Schema.define(version: 20180121144103) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
-    t.string   "description"
     t.integer  "weight"
     t.integer  "course_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "categories", ["course_id"], name: "index_categories_on_course_id"
@@ -67,22 +66,13 @@ ActiveRecord::Schema.define(version: 20180121144103) do
   create_table "daily_grades", force: :cascade do |t|
     t.integer  "grade"
     t.datetime "class_date"
-    t.integer  "grade_category_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-  end
-
-  add_index "daily_grades", ["grade_category_id"], name: "index_daily_grades_on_grade_category_id"
-
-  create_table "grade_categories", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "weight"
-    t.integer  "student_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "student_id"
+    t.string   "category"
   end
 
-  add_index "grade_categories", ["student_id"], name: "index_grade_categories_on_student_id"
+  add_index "daily_grades", ["student_id"], name: "index_daily_grades_on_student_id"
 
   create_table "holidays", force: :cascade do |t|
     t.string   "name"

@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   resources :comments
   get 'attendance' => 'attendances#show'
   patch 'attendance' => 'attendances#update'
-  resources :grade_categories
   resources :daily_grades
 
   authenticated :user do
