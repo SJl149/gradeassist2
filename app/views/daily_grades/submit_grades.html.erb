@@ -14,19 +14,21 @@
         </tr>
       </thead>
       <tbody>
-        <%= form_tag create_grades_path(method: :post) do  %>
+        <%= form_tag grades_collection_daily_grades_path, method: :post do |form| %>
           <%= label_tag :date, 'Select a date' %>
           <%= text_field_tag :date, @daily_grades_date, class: 'form-control small-text-field grade-datepicker' %>
           <%= label_tag :category_name, 'Select a Category' %>
-          <%= select_tag(:category_name, options_for_select(@categories)) %>
-          <% @student_daily_grades.each_with_index do |daily_grade, i| %>
-            <% student = Student.find(daily_grade.student_id) %>
+          <%= select_tag :category_name, options_for_select(@categories) %>
+          <% @students.each do |student| %>
             <tr>
               <td><%= student.nickname %></td>
               <td><%= student.family_name %>, <%= student.given_name %></td>
               <td>
-                <%= fields_for 'student_daily_grades[]', daily_grade, include_id: false do |dg| %>
-                  <%= dg.number_field :grade, name: 'student_grades[' + @student_daily_grades.index(daily_grade).to_s + '][grade]' %>
+                <%= fields_for "daily_grades[]", daily_grade do |s| %>
+                  <%= s.number_field :grade %>
+                  <% s.hidden_field :class_date, value: :date %>
+                  <% s.hidden_field :student_id, value: student.id %>
+                  <% s.hidden_field :category, value: :category_name %>
                 <% end %>
               </td>
               <td></td>

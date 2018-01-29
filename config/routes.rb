@@ -8,9 +8,13 @@ Rails.application.routes.draw do
   resources :comments
   get 'attendance' => 'attendances#show'
   patch 'attendance' => 'attendances#update'
-  resources :daily_grades
   get 'submit_grades' => 'daily_grades#submit_grades'
-  post 'create_grades' => 'daily_grades#create_grades'
+
+  resources :daily_grades do
+    collection do
+      match 'grades_collection', via: [:post]
+    end
+  end
 
   authenticated :user do
     root 'welcome#dashboard', as: :authenticate_root

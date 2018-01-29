@@ -4,14 +4,15 @@ class DailyGradesController < ApplicationController
     @students = @course.students.order(:family_name)
     @categories = []
     @course.categories.each { |cat| @categories << cat.name }
-    @student_daily_grades = []
-    @students.each { |student| @student_daily_grades << DailyGrade.new(student: student) }
+
   end
 
-  def create_grades
-    @daily_grades = []
+  def grades_collection
+    @class_date = params[:date]
+    @category = params[:category_name]
     params[:student_grades].each do |key, value|
-      DailyGrade.new(daily_grade_params(value))
+      student_id = key.to_i
+      DailyGrade.create(daily_grade_params(value), student_id: student_id, class_date: @class_date, category: @category)
     end
 
     redirect_to root_path
@@ -37,6 +38,6 @@ class DailyGradesController < ApplicationController
   private
 
   def daily_grade_params(my_params)
-    params.permit(:class_date, :grade, :student_id, :category)
+    my_params.permit(:class_date, :grade, :student_id, :category)
   end
 end
