@@ -1,5 +1,7 @@
 $(document).on('turbolinks:load', function() {
 
+  $(".best_in_place").best_in_place();
+
   var start_date = ($('#start_end_dates').data('startDate'));
   var end_date = ($('#start_end_dates').data('endDate'));
 

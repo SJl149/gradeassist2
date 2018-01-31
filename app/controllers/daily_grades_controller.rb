@@ -1,27 +1,13 @@
 class DailyGradesController < ApplicationController
   respond_to :html, :json
 
-  def submit_grades
-    @course = Course.find(params[:course_id])
-    @students = @course.students.order(:family_name)
-    @categories = []
-    @course.categories.each { |cat| @categories << cat.name }
-    @student_daily_grades = []
-    @students.each { |student| @student_daily_grades << DailyGrade.create(student: student) }
-  end
-
   def edit
-    @course = Course.find(params[:course_id])
-    @students = @course.students.order(:family_name)
-    @categories = []
-    @course.categories.each { |cat| @categories << cat.name }
+    @daily_grade = DailyGrade.find(params[:id])
   end
 
   def update
     @daily_grade = DailyGrade.find(params[:id])
     @course = Course.find(params[:course_id])
-    @category = params[:category_name]
-    @class_date = params[:date]
 
     respond_to do |format|
       if @daily_grade.update(daily_grade_params)
@@ -34,13 +20,34 @@ class DailyGradesController < ApplicationController
     end
   end
 
-  def create_grades
-    @daily_grades = []
-    params[:student_grades].each do |key, value|
-      DailyGrade.new(daily_grade_params(value))
-    end
+  def grades
+    @course = Course.find(params[:course_id])
+    @students = @course.students.order(:family_name)
 
-    redirect_to root_path
+    @class_date = params[:date]&.to_date
+    @category = params[:category]
+
+    @student_daily_grades = @students.map do |student|
+      DailyGrade.find_or_create_by(student_id: student.id, class_date: @class_date, category: @category) 
+    end
+  end
+
+  def update_grades
+    @course = Course.find(params[:course_id])
+    @student = Student.find(params[:student_id])
+    date = params[:date].to_date
+    category = params[:grade_category]
+
+    @daily_grade = @student.daily_grades.find_by(class_date: date.beginning_of_day..date.end_of_day, category: category)
+    respond_to do |format|
+      if @daily_grade.update(daily_grade_params)
+        format.html { render partial: "grade"}
+        format.js
+      else
+        flash.now[:alert] = "Error updating grades. Please try again."
+        format.html { render :edit }
+      end
+    end
   end
 
   def date_selector

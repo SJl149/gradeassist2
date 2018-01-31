@@ -1,0 +1,26 @@
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <h3 class="panel-title text-center">Grades: <%= @course.name %></h3>
+
+  </div>
+  <div class="panel-body table-responsive">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Students</th>
+          <th>Grade</th>
+          <th>Comments</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @student_daily_grades.each do |daily_grade| %>
+          <tr>
+            <td><%= daily_grade.student.nickname %></td>
+            <td class="text-center"><%= best_in_place daily_grade, :grade, html_attrs: { size: '5'} %></td>
+            <td>comments</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
