@@ -13,8 +13,7 @@ Rails.application.routes.draw do
   get 'attendance' => 'attendances#show'
   patch 'attendance' => 'attendances#update'
   get 'grades' => 'daily_grades#grades'
-  patch 'update_grades' => 'daily_grades#update_grades'
-  
+
   resources :daily_grades
 
   authenticated :user do
