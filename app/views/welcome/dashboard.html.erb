@@ -14,6 +14,24 @@
             </div>
             <div class="panel-body">
               <h3><%= link_to "Attendance", attendance_path(course_id: course) %></h3>
+              <div class="grade-date-category-select">
+                <h3 class="text-primary">Grades</h3>
+                <%= form_tag grades_path, method: :get, class: 'grade-time-select' do %>
+                  <%= hidden_field_tag :course_id, course.id %>
+                  <p>
+                    <%= label_tag :date, 'Select a date' %>
+                    <%= date_field_tag :date, @daily_grades_date %>
+                  </p>
+                  <p>
+                    <%= label_tag :category_name, 'Select a Category' %>
+                    <% @categories = course.categories.map { |cat| cat.name }  %>
+                    <%= select_tag :category_name, options_for_select(@categories) %>
+                  </p>
+                  <p>
+                    <%= submit_tag "Go", class: 'btn btn-info btn-sm'%>
+                  </p>
+                <% end %>
+              </div>
               <h3><%= link_to "Class Overview", course %></h3>
             </div>
           </div>
