@@ -13,26 +13,28 @@
               <h3 class="panel-title text-center"><%= course.name %></h3>
             </div>
             <div class="panel-body">
-              <h3><%= link_to "Attendance", attendance_path(course_id: course) %></h3>
-              <div class="grade-date-category-select">
-                <h3 class="text-primary">Grades</h3>
-                <%= form_tag grades_path, method: :get, class: 'grade-time-select' do %>
-                  <%= hidden_field_tag :course_id, course.id %>
-                  <p>
-                    <%= label_tag :date, 'Select a date' %>
-                    <%= date_field_tag :date, @daily_grades_date %>
-                  </p>
-                  <p>
-                    <%= label_tag :category_name, 'Select a Category' %>
-                    <% @categories = course.categories.map { |cat| cat.name }  %>
-                    <%= select_tag :category_name, options_for_select(@categories) %>
-                  </p>
-                  <p>
-                    <%= submit_tag "Go", class: 'btn btn-info btn-sm'%>
-                  </p>
-                <% end %>
+              <div class="row">
+                <div class="col-md-5">
+                  <h3><%= link_to "Attendance", attendance_path(course_id: course) %></h3>
+                  <h3><%= link_to "Class Overview", course %></h3>
+                </div>
+                <div class="col-md-6 grade-date-category-select">
+
+                  <%= form_tag grades_path, method: :get, class: 'grade-time-select' do %>
+                    <h3 class="text-primary">Grades <%= submit_tag "Go", class: 'btn btn-info btn-sm' %></h3>
+                    <%= hidden_field_tag :course_id, course.id %>
+                    <p>
+                      <%= label_tag :date, 'Select a date' %>
+                      <%= text_field_tag :date, @daily_grades_date, data:{ provide:'datepicker' }, class: 'welcome-datepicker'%>
+                    </p>
+                    <p>
+                      <%= label_tag :category_name, 'Select a Category' %>
+                      <% @categories = course.categories.map { |cat| cat.name }  %>
+                      <%= select_tag :category_name, options_for_select(@categories) %>
+                    </p>
+                  <% end %>
+                </div>
               </div>
-              <h3><%= link_to "Class Overview", course %></h3>
             </div>
           </div>
         </div>
