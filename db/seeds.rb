@@ -5,6 +5,7 @@ ClassDay.destroy_all
 Category.destroy_all
 Student.destroy_all
 Attendance.destroy_all
+DailyGrade.destroy_all
 
 # Create Users
 user1 = User.new(
@@ -94,7 +95,7 @@ end
 students_group1 = Student.first(15)
 students_group2 = Student.all - students_group1
 
-# Create Attendances
+# Create course schedule
 start_date = course1.start_date.to_date
 end_date = course1.end_date.to_date
 class_days = [1,2,3,4]
@@ -105,17 +106,27 @@ course_schedule = []
   end
 end
 
+# Create Attendances and DailyGrades
 students = students_group1 + students_group2
+categories = ["HW", "Participation", "Quizzes", "Exams"]
+grades = [100, 90, 80, 70, 60, 50]
+
 course_schedule.each do |class_date|
-  students.each_with_index do |student, i|
+  students.each do |student|
     Attendance.create(
       class_date: class_date,
       student: student
     )
+    categories.each do |category|
+      DailyGrade.create(
+        class_date: class_date,
+        category: category,
+        grade: grades.sample,
+        student: student
+      )
+    end
   end
 end
-
-
 
 puts "Seeds finshed"
 puts "#{User.count} users created"
@@ -125,3 +136,4 @@ puts "#{ClassDay.count} class_days created"
 puts "#{Category.count} categories created"
 puts "#{Student.count} students created"
 puts "#{Attendance.count} attendance records created"
+puts "#{DailyGrade.count} daily_grades created"

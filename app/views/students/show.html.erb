@@ -43,6 +43,7 @@
     <div class="col-md-4 col-md-offset-4">
       <div class="btn-group btn-group-justified">
         <%= link_to "Class Overview", @course, class: "btn btn-primary" %>
+        <%= link_to "#{@student.nickname}'s Grades", { :controller => "daily_grades", :action => "index", :student => @student.id }, class: "btn btn-primary" %>
       </div>
     </div>
   </div>

@@ -1,6 +1,15 @@
 class DailyGradesController < ApplicationController
   respond_to :html, :json
 
+  def index
+    @student = Student.find(params[:student])
+    @course = @student.course
+    @daily_grades = @student.daily_grades.order(:class_date)
+    @category_names = @course.categories.pluck(:name)
+    @attendances = @student.attendances
+
+  end
+
   def edit
     @daily_grade = DailyGrade.find(params[:id])
   end

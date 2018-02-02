@@ -7,6 +7,9 @@
   <div class="col-md-12">
     <div class="row">
       <% @courses.each do |course| %>
+        <% not_class_days = [0,1,2,3,4,5,6] - course.class_days.map { |cd| ClassDay.day_of_weeks[cd.day_of_week] } %>
+        <%= content_tag :div, id: "start_end_dates", data: { start_date: course.start_date.to_date, end_date: course.end_date.to_date, not_class_days: not_class_days } do %>
+        <% end %>
         <div class="col-md-6">
           <div class="panel panel-info">
             <div class="panel-heading">
