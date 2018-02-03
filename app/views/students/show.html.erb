@@ -14,11 +14,9 @@
         <div class="row">
           <div class="col-md-5">
             <h3 class="text-primary">Grades</h3>
-            <h4>Homework: 90%</h4>
-            <h4>Participation: 80%</h4>
-            <h4>Quizzes: 87%</h4>
-            <h4>Exams/Projects: 94%</h4>
-
+            <% @grades.each do |category, grade_average| %>
+              <h4><%= category %>: <%= grade_average %>%</h4>
+            <% end %>
           </div>
           <div class="col-md-4">
             <h3 class="text-danger">Absences</h3>
@@ -43,6 +41,7 @@
     <div class="col-md-4 col-md-offset-4">
       <div class="btn-group btn-group-justified">
         <%= link_to "Class Overview", @course, class: "btn btn-primary" %>
+        <%= link_to "#{@student.nickname}'s Grades", { :controller => "daily_grades", :action => "index", :student => @student.id }, class: "btn btn-primary" %>
       </div>
     </div>
   </div>

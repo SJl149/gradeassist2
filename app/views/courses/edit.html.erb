@@ -1,40 +1,5 @@
-<h1 class="text-center">Update <%= @course.name %></h1>
+<h1>Update <%= @course.name %></h1>
+<hr>
 <div class="course-form">
-  <%= simple_form_for @course do |f| %>
-    <div class="row">
-      <div class="col-md-12">
-        <%= f.input :name %>
-        <%= f.label :start_date %><br>
-        <%= f.text_field :start_date, data:{ provide:'datepicker' }, class: 'small-text-field course-datepicker' %><br>
-        <%= f.label :end_date %><br>
-        <%= f.text_field :end_date, data:{ provide:'datepicker' }, class: 'small-text-field course-datepicker' %>
-        <h3>Class Days</h3>
-        <div id="class_days">
-          <%= f.simple_fields_for :class_days do |class_day| %>
-            <%= render 'class_day_fields', f: class_day %>
-          <% end %>
-          <%= link_to_add_association 'Add', f, :class_days, class: 'btn btn-success' %>
-        </div>
-        <h3>Holidays</h3>
-        <div id="holidays">
-          <%= f.simple_fields_for :holidays do |holiday| %>
-            <%= render 'holiday_fields', f: holiday %>
-          <% end %>
-          <%= link_to_add_association 'Add', f, :holidays, class: 'btn btn-success' %>
-        </div>
-        <h3>Grade Categories</h3>
-        <div id="categories">
-          <%= f.simple_fields_for :categories do |category| %>
-            <%= render 'category_fields', f: category %>
-          <% end %>
-          <%= link_to_add_association 'Add', f, :categories, class: 'btn btn-success' %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2">
-          <%= f.button :submit, class: 'btn btn-info' %>
-        </div>
-      </div>
-    </div>
-  <% end %>
+  <%= render 'form' %>
 </div>

@@ -26,6 +26,15 @@ body {
 
 @import "bootswatch/cerulean/bootswatch";
 
-.small-text-field {
+.small-date-field {
   width: 20%;
+}
+
+.small-text-field {
+  width: 40%;
+}
+
+abbr[title] {
+  border: none;
+  text-decoration: none;
 }

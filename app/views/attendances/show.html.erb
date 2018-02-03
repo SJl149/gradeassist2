@@ -4,7 +4,7 @@
     <%= form_tag attendance_path, class: 'grade-time-select', method: :get do %>
       <%= hidden_field_tag :course_id, @course.id %>
       <%= label_tag :date, 'Select a date' %>
-      <%= text_field_tag :date, @attendance_date, class: 'form-control small-text-field grade-datepicker' %>
+      <%= text_field_tag :date, @attendance_date, class: 'form-control small-date-field grade-datepicker' %>
     <% end %>
   </div>
   <div class="panel-body table-responsive">

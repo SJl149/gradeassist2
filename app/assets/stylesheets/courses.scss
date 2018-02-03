@@ -1,8 +1,19 @@
-.course-form label {
-  margin-right: 10px;
+.simple_form {
+  div.input {
+    margin-bottom: 10px;
+    clear: both;
+  }
+  label {
+    float: left;
+    width: 100px;
+    text-align: right;
+    margin: 2px 10px;
+  }
 }
+
 .course-form .links {
   margin-top: 5px;
+  margin-bottom: 5px;
 }
 .course-form .nested-fields {
   margin-top: 5px;
