@@ -10,10 +10,9 @@
         <th>Student</th>
         <th>Name</th>
         <th>Attendance</th>
-        <th>Participation</th>
-        <th>Homework</th>
-        <th>Quizzes</th>
-        <th>Exams</th>
+        <% @categories.each do |category|  %>
+          <th><%= category %></th>
+        <% end %>
         <th>Comments</th>
       </tr>
     </thead>
@@ -23,10 +22,9 @@
           <td><%= link_to student.nickname, student %></td>
           <td><%= student.family_name %>, <%= student.given_name %></td>
           <td>A: <%= student.attendances.where(status: 2).count %> | L: <%= student.attendances.where(status: 1).count %></td>
-          <td>85%</td>
-          <td>90%</td>
-          <td>80%</td>
-          <td>93%</td>
+          <% @categories.each do |category| %>
+            <td> <%= student.daily_grades.where(category: category).average(:grade).to_i %>%</td>
+          <% end %>
           <td><span class="glyphicon glyphicon-ok" aria-hidden="true"> </span></td>
         </tr>
       <% end %>

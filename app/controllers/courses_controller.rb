@@ -2,6 +2,7 @@ class CoursesController < ApplicationController
   def show
     @course = Course.find(params[:id])
     @students = @course.students.order(:family_name)
+    @categories = @course.categories.pluck(:name)
 
     #respond_to do |format|
     #  format.html

@@ -7,7 +7,6 @@ class DailyGradesController < ApplicationController
     @daily_grades = @student.daily_grades.order(:class_date)
     @category_names = @course.categories.pluck(:name)
     @attendances = @student.attendances
-
   end
 
   def edit

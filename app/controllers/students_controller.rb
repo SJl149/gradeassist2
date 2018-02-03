@@ -4,6 +4,10 @@ class StudentsController < ApplicationController
     @lates = @student.attendances.where(status: 1)
     @absences = @student.attendances.where(status: 2)
     @course = @student.course
+
+    @categories = @course.categories.pluck(:name)
+    @grades = {}
+    @categories.each { |category| @grades[category] = @student.daily_grades.where(category: category).average(:grade).to_i }
   end
 
   def index
