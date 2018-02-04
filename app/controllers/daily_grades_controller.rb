@@ -43,6 +43,6 @@ class DailyGradesController < ApplicationController
   private
 
   def daily_grade_params
-    params.require(:daily_grade).permit(:class_date, :grade, :student_id, :category)
+    params.require(:daily_grade).permit(:class_date, :grade, :student_id, :category, :comment)
   end
 end

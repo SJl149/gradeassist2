@@ -13,7 +13,6 @@
         <% @categories.each do |category|  %>
           <th><%= category %></th>
         <% end %>
-        <th>Comments</th>
       </tr>
     </thead>
     <tbody>
@@ -25,7 +24,6 @@
           <% @categories.each do |category| %>
             <td> <%= student.daily_grades.where(category: category).average(:grade).to_i %>%</td>
           <% end %>
-          <td><span class="glyphicon glyphicon-ok" aria-hidden="true"> </span></td>
         </tr>
       <% end %>
     </tbody>

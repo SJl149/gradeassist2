@@ -1,6 +1,7 @@
 <div class="panel panel-default">
   <div class="panel-body">
-    <h2 class="text-center"><%= @student.nickname %>'s grades for <em><%= @course.name %></em></h2>
+    <h2 class="text-center"><%= @student.nickname %></h2>
+    <h3 class="text-center"><%= @course.name %></h3>
   </div>
 </div>
 <div class="table-responsive">
@@ -18,14 +19,22 @@
       <% @attendances.each do |attendance| %>
         <tr class="<%= current_classdate(attendance.class_date) %>">
           <td class="text-info"><strong><%= attendance.class_date.to_date.to_formatted_s(:long) %></strong></td>
-          <td><%= attendance.status %></td>
+          <td>
+            <%= attendance.status %>
+            <% if attendance.comment.present? %>
+              <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+            <% end %>
+          </td>
           <% @category_names.each do |category_name| %>
             <% grade = @daily_grades.where(category: category_name, class_date: attendance.class_date).first %>
-            <% if grade %>
-              <td><%= best_in_place grade, :grade, html_attrs: { size: '5'} %></td>
-            <% else %>
-              <td></td>
-            <% end %>
+            <td>
+              <% if grade %>
+                <%= best_in_place grade, :grade, html_attrs: { size: '5'} %>
+                <% if grade.comment.present? %>
+                  <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+                <% end %>
+              <% end %>
+            </td>
           <% end %>
         </tr>
       <% end %>

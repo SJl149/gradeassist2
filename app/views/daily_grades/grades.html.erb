@@ -15,8 +15,8 @@
         <% @student_daily_grades.each do |daily_grade| %>
           <tr>
             <td><%= daily_grade.student.nickname %></td>
-            <td class="text-center"><%= best_in_place daily_grade, :grade, html_attrs: { size: '5'} %></td>
-            <td>comments</td>
+            <td><%= best_in_place daily_grade, :grade, place_holder: '---', html_attrs: { size: '5' } %> %</td>
+            <td><%= best_in_place daily_grade, :comment %></td>
           </tr>
         <% end %>
       </tbody>
