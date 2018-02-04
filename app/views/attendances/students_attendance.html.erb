@@ -1,7 +1,7 @@
 <div class="panel panel-success">
   <div class="panel-heading">
     <h2 class="panel-title text-center">Attendance: <%= @course.name %> | <%= @attendance_date.to_formatted_s(:long_ordinal) %></h2>
-    <%= form_tag attendance_path, class: 'grade-time-select', method: :get do %>
+    <%= form_tag students_attendance_path, class: 'grade-time-select', method: :get do %>
       <%= hidden_field_tag :course_id, @course.id %>
       <%= label_tag :date, 'Select a date' %>
       <%= text_field_tag :date, @attendance_date, class: 'form-control small-date-field grade-datepicker' %>
@@ -27,10 +27,10 @@
           <tr>
             <td><%= student.nickname %></td>
             <td id="student_<%= student.id %>"><span class="label label-<%= attendance_label(@student_attendance.status) %>" ><%= @student_attendance.status %></span></td>
-            <td><%= link_to 'Present', attendance_path(student_id: student, date: @attendance_date, attendance: { status: :present}), remote: true, method: :patch, class: "btn btn-success" %></td>
-            <td><%= link_to 'Late', attendance_path(student_id: student, course_id: @course.id, date: @attendance_date, attendance: { status: :late}), remote: true, method: :patch, class: "btn btn-warning" %></td>
-            <td><%= link_to 'Absent', attendance_path(student_id: student, course_id: @course.id, date: @attendance_date, attendance: { status: :absent}), remote: true, method: :patch, class: "btn btn-danger" %></td>
-            <td></td>
+            <td><%= link_to 'Present', update_attendance_path(student_id: student, date: @attendance_date, attendance: { status: :present}), remote: true, method: :patch, class: "btn btn-success" %></td>
+            <td><%= link_to 'Late', update_attendance_path(student_id: student, date: @attendance_date, attendance: { status: :late}), remote: true, method: :patch, class: "btn btn-warning" %></td>
+            <td><%= link_to 'Absent', update_attendance_path(student_id: student, date: @attendance_date, attendance: { status: :absent}), remote: true, method: :patch, class: "btn btn-danger" %></td>
+            <td><%= best_in_place @student_attendance, :comment %></td>
           </tr>
         <% end %>
       </tbody>

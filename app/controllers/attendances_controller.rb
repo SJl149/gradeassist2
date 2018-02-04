@@ -1,13 +1,29 @@
 class AttendancesController < ApplicationController
   respond_to :html, :json
 
-  def show
+  def students_attendance
     @course = Course.find(params[:course_id])
     @students = @course.students.order(:family_name)
     @attendance_date = params[:date]&.to_date || date_selector
   end
 
   def update
+    @attendance = Attendance.find(params[:id])
+    student = Student.find(@attendance.student_id)
+    course = Course.find(student.course_id)
+
+    respond_to do |format|
+      if @attendance.update(attendance_params)
+        format.html { redirect_to(attendance_path(course_id: course)) }
+        format.json { respond_with_bip(@attendance) }
+      else
+        format.html { render :action => "edit" }
+        format.json { respond_with_bip(@attendance) }
+      end
+    end
+  end
+
+  def update_attendance
     @student = Student.find(params[:student_id])
     date = params[:date].to_date
     @attendance = @student.attendances.find_by(class_date: date.beginning_of_day..date.end_of_day)
@@ -43,6 +59,6 @@ class AttendancesController < ApplicationController
   private
 
   def attendance_params
-    params.require(:attendance).permit(:class_date, :status, :date)
+    params.require(:attendance).permit(:class_date, :status, :date, :comment)
   end
 end
