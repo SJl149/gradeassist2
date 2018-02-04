@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   resources :class_days
   resources :categories
   resources :students
-  resources :comments
 
   get 'attendance' => 'attendances#show'
   patch 'attendance' => 'attendances#update'

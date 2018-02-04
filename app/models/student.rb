@@ -2,7 +2,6 @@ class Student < ActiveRecord::Base
   belongs_to :course
   has_many :daily_grades
   has_many :attendances
-  has_many :comments
 
   before_save :assign_nickname
 
