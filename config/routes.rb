@@ -8,10 +8,11 @@ Rails.application.routes.draw do
   resources :class_days
   resources :categories
   resources :students
-  resources :comments
 
-  get 'attendance' => 'attendances#show'
-  patch 'attendance' => 'attendances#update'
+  get 'students_attendance' => 'attendances#students_attendance'
+  patch 'update_attendance' => 'attendances#update_attendance'
+  resources :attendances, only: [:update]
+
 
   get 'grades' => 'daily_grades#grades'
 

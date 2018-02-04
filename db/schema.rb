@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180128163736) do
+ActiveRecord::Schema.define(version: 20180204165352) do
 
   create_table "attendances", force: :cascade do |t|
     t.datetime "class_date"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20180128163736) do
     t.integer  "student_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "comment"
   end
 
   add_index "attendances", ["student_id"], name: "index_attendances_on_student_id"
@@ -42,16 +43,6 @@ ActiveRecord::Schema.define(version: 20180128163736) do
 
   add_index "class_days", ["course_id"], name: "index_class_days_on_course_id"
 
-  create_table "comments", force: :cascade do |t|
-    t.string   "content"
-    t.datetime "class_date"
-    t.integer  "student_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "comments", ["student_id"], name: "index_comments_on_student_id"
-
   create_table "courses", force: :cascade do |t|
     t.string   "name"
     t.integer  "user_id"
@@ -70,6 +61,7 @@ ActiveRecord::Schema.define(version: 20180128163736) do
     t.datetime "updated_at", null: false
     t.integer  "student_id"
     t.string   "category"
+    t.string   "comment"
   end
 
   add_index "daily_grades", ["student_id"], name: "index_daily_grades_on_student_id"
