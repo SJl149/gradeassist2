@@ -2,12 +2,12 @@ class CoursesController < ApplicationController
   def show
     @course = Course.find(params[:id])
     @students = @course.students.order(:family_name)
-    @categories = @course.categories.pluck(:name)
+    @categories = @course.categories
 
-    #respond_to do |format|
-    #  format.html
-    #  format.xlsx
-    #end
+    respond_to do |format|
+      format.html
+      format.xlsx
+    end
   end
 
   def index

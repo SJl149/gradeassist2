@@ -11,7 +11,7 @@
         <th>Name</th>
         <th>Attendance</th>
         <% @categories.each do |category|  %>
-          <th><%= category %></th>
+          <th><%= category.name %></th>
         <% end %>
       </tr>
     </thead>
@@ -22,7 +22,7 @@
           <td><%= student.family_name %>, <%= student.given_name %></td>
           <td>A: <%= student.attendances.where(status: 2).count %> | L: <%= student.attendances.where(status: 1).count %></td>
           <% @categories.each do |category| %>
-            <td> <%= student.daily_grades.where(category: category).average(:grade).to_i %>%</td>
+            <td> <%= student.daily_grades.where(category: category.name).average(:grade).to_i %>%</td>
           <% end %>
         </tr>
       <% end %>
