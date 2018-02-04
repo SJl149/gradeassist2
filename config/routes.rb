@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'comments/index'
+
+  get 'comments/edit'
+
+  get 'comments/show'
+
   devise_for :users, :controllers => {registrations: 'registrations'}
 
   get 'about' => 'welcome#about'

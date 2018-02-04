@@ -1,0 +1,6 @@
+<%= simple_form_for @comment, html: { class: 'form-horizontal' }, wrapper: :horizontal_form do |f| %>
+  <%= f.label :class_date %>
+  <%= f.text_field :class_date, data:{ provide:'datepicker' }, class: 'small-date-field comments-datepicker' %>
+  <%= f.input :content %>
+  <%= f.button :submit, class: 'btn btn-info'  %>
+<% end %>

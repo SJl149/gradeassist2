@@ -6,6 +6,7 @@ Category.destroy_all
 Student.destroy_all
 Attendance.destroy_all
 DailyGrade.destroy_all
+Comment.destroy_all
 
 # Create Users
 user1 = User.new(
@@ -106,10 +107,11 @@ course_schedule = []
   end
 end
 
-# Create Attendances and DailyGrades
+# Create Attendances and DailyGrades and Comments
 students = students_group1 + students_group2
 categories = ["HW", "Participation", "Quizzes", "Exams"]
 grades = [100, 90, 80, 70, 60, 50]
+comment_content = ["Great work today!", "Fell asleep in class", "Had subway trouble", "Worked hard on the assignment"]
 
 course_schedule.each do |class_date|
   students.each do |student|
@@ -125,6 +127,13 @@ course_schedule.each do |class_date|
         student: student
       )
     end
+    if class_date.wday == 4
+      Comment.create(
+        class_date: class_date,
+        content: comment_content.sample,
+        student: student
+      )
+    end
   end
 end
 
@@ -137,3 +146,4 @@ puts "#{Category.count} categories created"
 puts "#{Student.count} students created"
 puts "#{Attendance.count} attendance records created"
 puts "#{DailyGrade.count} daily_grades created"
+puts "#{Comment.count} comments created"

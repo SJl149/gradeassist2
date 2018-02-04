@@ -30,7 +30,12 @@
             <td><%= link_to 'Present', attendance_path(student_id: student, date: @attendance_date, attendance: { status: :present}), remote: true, method: :patch, class: "btn btn-success" %></td>
             <td><%= link_to 'Late', attendance_path(student_id: student, course_id: @course.id, date: @attendance_date, attendance: { status: :late}), remote: true, method: :patch, class: "btn btn-warning" %></td>
             <td><%= link_to 'Absent', attendance_path(student_id: student, course_id: @course.id, date: @attendance_date, attendance: { status: :absent}), remote: true, method: :patch, class: "btn btn-danger" %></td>
-            <td></td>
+            <% comment = student.comments.for_date(@attendance_date) %>
+            <% if comment %>
+              <td><%= comment.content %></td>
+            <% else %>
+              <td><%= link_to 'add', new_comment_path(student_id: student, class_date: @attendance_date) %></td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>
