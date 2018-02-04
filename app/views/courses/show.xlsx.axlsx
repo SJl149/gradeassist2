@@ -1,0 +1,21 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "QCC POE") do |sheet|
+  column_names = ["Student", "Name", "Absences"]
+  @categories.each { |cat| column_names << cat.name }
+  column_names << "Final Grade"
+  sheet.add_row column_names
+
+  @students.each do |student|
+    legal_name = student.given_name + " " + student.family_name
+    student_attendance = student.attendances.where(status: 2).count + (student.attendances.where(status: 1).count / 3)
+    column_values = [student.nickname, legal_name, student_attendance]
+    final_grade = 0
+    @categories.each do |category|
+      final_grade += (student.daily_grades.where(category: category.name).average(:grade).to_i * (category.weight / 100.0))
+      column_values << student.daily_grades.where(category: category.name).average(:grade).to_i
+    end
+    column_values << final_grade.to_i
+
+    sheet.add_row column_values
+  end
+end
