@@ -1,4 +1,4 @@
-<div class="panel panel-success">
+<div class="panel panel-info">
   <div class="panel-heading">
     <h2 class="panel-title text-center">Attendance: <%= @course.name %> | <%= @attendance_date.to_formatted_s(:long_ordinal) %></h2>
     <%= form_tag students_attendance_path, class: 'grade-time-select', method: :get do %>
@@ -10,7 +10,7 @@
   <div class="panel-body table-responsive">
     <table class="table table-striped table-hover">
       <thead>
-        <tr>
+        <tr class="info">
           <th>Student</th>
           <th>Status</th>
           <th>Present</th>

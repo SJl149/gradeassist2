@@ -10,25 +10,25 @@
   <div id="class_days">
     <%= f.simple_fields_for :class_days do |class_day| %>
       <%= render 'class_day_fields', f: class_day %>
-      <%= link_to_add_association 'Add Class Day', f, :class_days, class: 'btn btn-success links' %>
+      <%= link_to_add_association 'Add Class Day', f, :class_days, class: 'btn btn-success btn-sm links' %>
     <% end %>
   </div>
   <h3>Holidays</h3>
   <div id="holidays">
     <%= f.simple_fields_for :holidays do |holiday| %>
       <%= render 'holiday_fields', f: holiday %>
-      <%= link_to_add_association 'Add Holiday', f, :holidays, class: 'btn btn-success' %>
+      <%= link_to_add_association 'Add Holiday', f, :holidays, class: 'btn btn-success btn-sm links' %>
     <% end %>
   </div>
   <h3>Grade Categories</h3>
   <div id="categories">
     <%= f.simple_fields_for :categories do |category| %>
       <%= render 'category_fields', f: category %>
-      <%= link_to_add_association 'Add Category', f, :categories, class: 'btn btn-success links' %>
+      <%= link_to_add_association 'Add Category', f, :categories, class: 'btn btn-success btn-sm links' %>
     <% end %>
   </div>
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-6">
       <%= f.button :submit, class: 'btn btn-info btn-block' %>
     </div>
   </div>
