@@ -14,7 +14,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @students.each do |student| %>
+        <% ordered_by_family_name(@students).each do |student| %>
           <tr>
             <td><%= link_to student.nickname, student %></td>
             <td><%= student.family_name %>, <%= student.given_name %></td>

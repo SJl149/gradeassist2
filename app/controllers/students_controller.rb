@@ -10,7 +10,13 @@ class StudentsController < ApplicationController
   end
 
   def index
-    @students = Student.all.order(:family_name)
+    @courses = current_user.courses
+    @students = []
+    @courses.each do |course|
+      course.students.each do |student|
+        @students << student
+      end
+    end
   end
 
   def new

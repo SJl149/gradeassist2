@@ -1,5 +1,5 @@
 <%= simple_form_for @student, html: { class: 'form-horizontal' }, wrapper: :horizontal_form do |f| %>
-  <%= f.association :course, label_method: :name %>
+  <%= f.association :course, label_method: :name, collection: Course.where(user: current_user) %>
   <%= f.input :given_name %>
   <%= f.input :family_name %>
   <%= f.input :nickname %>
