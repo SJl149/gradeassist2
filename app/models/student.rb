@@ -1,7 +1,7 @@
 class Student < ActiveRecord::Base
   belongs_to :course
-  has_many :daily_grades
-  has_many :attendances
+  has_many :daily_grades, dependent: :destroy
+  has_many :attendances, dependent: :destroy
 
   before_save :assign_nickname
 
