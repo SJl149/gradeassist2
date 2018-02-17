@@ -4,9 +4,9 @@ class DailyGradesController < ApplicationController
   def index
     @student = Student.find(params[:student])
     @course = @student.course
-    @daily_grades = @student.daily_grades.order(:class_date)
+    @daily_grades = @student.daily_grades
     @category_names = @course.categories.pluck(:name)
-    @attendances = @student.attendances
+    @attendances = @student.attendances.order('class_date ASC')
   end
 
   def edit
@@ -36,7 +36,7 @@ class DailyGradesController < ApplicationController
 
     @student_daily_grades = []
     @students.each do |student|
-      @student_daily_grades << student.daily_grades.find_or_create_by(class_date: @class_date.beginning_of_day..@class_date.end_of_day, category: @category)
+      @student_daily_grades << student.daily_grades.find_or_create(@class_date, @category)
     end
   end
 
