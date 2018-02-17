@@ -6,7 +6,7 @@ class DailyGradesController < ApplicationController
     @course = @student.course
     @daily_grades = @student.daily_grades
     @category_names = @course.categories.pluck(:name)
-    @attendances = @student.attendances
+    @attendances = @student.attendances.order('class_date ASC')
   end
 
   def edit
