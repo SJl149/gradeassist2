@@ -3,3 +3,115 @@
   <p>Making grading easier and more efficient so teachers can focus on helping students learn. </p>
   <p>Created by <strong>Scott Lenander</strong></p>
 </div>
+<div class="container">
+  <div class="row">
+    <h1 class="text-center">How to use GradeAssist</h1>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="col-md-12">
+          <h3>Sign up/Sign in</h3>
+          <p>Signing up is easy with GradeAssist. Click on <span class="label label-primary">Sign Up</span> and set your username, email, and password. After you receive an email confirmation, <span class="label label-primary">Sign In</span> and start using.</p>
+          <br>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="panel-body">
+      <div class="col-md-6 col-md-offset-1">
+        <%= image_tag "create_class.png", height: '400', width: '400' %>
+      </div>
+      <div class="col-md-5">
+        <h3>Create Class</h3>
+        <p><strong>Instructions:</strong></p>
+        <ol>
+          <li>Enter the class name and select the start and end dates.</li>
+          <li>Choose which days the class will meet.</li>
+          <li>Holidays, which are optional, can be added to the schedule.</li>
+          <li>Choose as many grade catergories as you like, but be sure to set the total weight to 100%.</li>
+          <li>Class days, holidays, and grade categories can be added or removed by selecting the <span class="label label-success">Add Item</span> or <span class="label label-danger">Remove</span> buttons.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="col-md-5">
+          <h3>Teacher Dashboard</h3>
+          <ul>
+            <li>Current classes are displayed in panels with links to grades for current semester's classes.</li>
+            <li><span class="text-primary">All Classes</span> lists current and previous classes.</li>
+            <li><span class="text-primary">Students</span> lists all students in your current and past classes.</li>
+            <li><span class="text-primary">Create Class</span> creates a new class.</li>
+            <li><span class="text-primary">Create Student</span> creates a new student record.</li>
+          </ul>
+        </div>
+        <div class="col-md-7">
+          <%= image_tag "teacher_dashboard.png", height: '400', width: '600' %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="panel-body">
+      <div class="col-md-7">
+        <%= image_tag "attendance.png", height: '400', width: '600' %>
+      </div>
+      <div class="col-md-5">
+        <h3>Attendance</h3>
+        <p>A page to quickly record student attendance.</p>
+        <p><strong>Instructions:</strong></p>
+        <ol>
+          <li>Select a date on the top.</li>
+          <li>Click the appropriate attendance button.</li>
+          <li>Click in the column <strong>Comments</strong> to add a comment for the student.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="col-md-5">
+          <h3>Class Overview</h3>
+          <p>The class overview gives an overview of the grades for a particular class. Averages displayed are for the grades entered.</p>
+          <p>The total number of absences and lates is displayed. In order to see which date a student was absent or late, go to the student's dashboard by clicking on the student's name.</p>
+          <p>Classes can be <span class="label label-primary">edited</span> and <span class="label label-danger">deleted</span> by clicking on the appropriate buttons on the bottom.</p>
+          <p><span class="label label-warning">Download Grade Breakdown</span> creates a grade breakdown .xls file and downloads it to your computer. You can use this file in any spreadsheet software to easily create final grade report sheets.</p>
+        </div>
+        <div class="col-md-7">
+          <%= image_tag "class_overview.png", height: '400', width: '600' %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="panel-body">
+      <div class="col-md-7">
+        <%= image_tag "student_overview.png", height: '400', width: '600' %>
+      </div>
+      <div class="col-md-5">
+        <h3>Student Dashboard</h3>
+        <p>Displays a class summary for a student including averaged grades and dates of lates or absences.</p>
+        <p>The <span class="label label-primary">Class Overview</span> button sends you to the student's current class overview page.</p>
+        <p>The <span class="label label-primary">Student's Grades</span> button gives a detailed record of a student's grades for the class.</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="col-md-5">
+          <h3>Student Record</h3>
+          <p>The student record displays the daily grades by class date for a student.</p>
+          <p>All grades shown can be edited and changed. Simply click on the grade, then select the grade or enter the value. If you need to add a grade, then go to the appropriate grade sheet for the class from the <em>Teacher Dashboard</em>.</p>
+          <p>A comment tag <span class="glyphicon glyphicon-comment"></span> will display if a comment was entered for any of the classdays. You can view the comment on the class grade sheet for that day.</p>
+        </div>
+        <div class="col-md-7">
+          <%= image_tag "student_grades.png", height: '400', width: '600' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
