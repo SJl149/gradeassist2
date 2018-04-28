@@ -11,8 +11,9 @@ wb.add_worksheet(name: "QCC POE") do |sheet|
     column_values = [student.nickname, legal_name, student_attendance]
     final_grade = 0
     @categories.each do |category|
-      final_grade += (student.daily_grades.where(category: category.name).average(:grade).to_i * (category.weight / 100.0))
-      column_values << student.daily_grades.where(category: category.name).average(:grade).to_i
+      student_category_average = student.daily_grades.where(category: category.name).average(:grade).to_i
+      final_grade += student_category_average * (category.weight / 100.0)
+      column_values << student_category_average
     end
     column_values << final_grade.to_i
 

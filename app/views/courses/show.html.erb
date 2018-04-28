@@ -13,6 +13,7 @@
         <% @categories.each do |category|  %>
           <th><%= category.name %></th>
         <% end %>
+        <th>Final Grade</th>
       </tr>
     </thead>
     <tbody>
@@ -21,9 +22,13 @@
           <td><%= link_to student.nickname, student %></td>
           <td><%= student.family_name %>, <%= student.given_name %></td>
           <td>A: <%= student.attendances.where(status: 2).count %> | L: <%= student.attendances.where(status: 1).count %></td>
+          <% student_final_grade = 0 %>
           <% @categories.each do |category| %>
-            <td> <%= student.daily_grades.where(category: category.name).average(:grade).to_i %>%</td>
+            <% student_category_average = student.daily_grades.where(category: category.name).average(:grade).to_i %>
+            <% student_final_grade += student_category_average * (category.weight / 100.0) %>
+            <td> <%= student_category_average %>%</td>
           <% end %>
+          <td><%= student_final_grade.to_i %>%</td>
         </tr>
       <% end %>
     </tbody>
