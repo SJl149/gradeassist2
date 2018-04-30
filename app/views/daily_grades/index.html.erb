@@ -22,7 +22,7 @@
           <td>
             <%= attendance.status %>
             <% if attendance.comment.present? %>
-              <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+              <span class="glyphicon glyphicon-comment comment_tooltip"  title="<%= attendance.comment %>" aria-hidden="true"></span>
             <% end %>
           </td>
           <% @category_names.each do |category_name| %>
@@ -31,7 +31,7 @@
               <% if grade %>
                 <%= best_in_place grade, :grade, html_attrs: { size: '5'} %>
                 <% if grade.comment.present? %>
-                  <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+                  <span class="glyphicon glyphicon-comment comment_tooltip" title="<%= grade.comment %>" aria-hidden="true"></span>
                 <% end %>
               <% end %>
             </td>
