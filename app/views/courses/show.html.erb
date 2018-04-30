@@ -43,5 +43,18 @@
         <%= link_to "Download Grade Breakdown", course_path(id: @course.id, format: :xlsx), data: {confirm: "Are you sure you want to download to this computer?"}, class: "btn btn-default btn-warning" %>
       </div>
     </div>
+    <div class="col-md-2">
+      <% if @course.archive? %>
+        <%= form_for @course do |f| %>
+          <%= f.hidden_field :archive, value: false %>
+          <%= f.submit 'Unarchive', class: "btn btn-default btn-success" %>
+        <% end %>
+      <% else %>
+        <%= form_for @course do |f| %>
+          <%= f.hidden_field :archive, value: true %>
+          <%= f.submit 'Archive', class: "btn btn-default btn-success" %>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180204165352) do
+ActiveRecord::Schema.define(version: 20180430133327) do
 
   create_table "attendances", force: :cascade do |t|
     t.datetime "class_date"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20180204165352) do
     t.datetime "updated_at", null: false
     t.datetime "start_date"
     t.datetime "end_date"
+    t.boolean  "archive"
   end
 
   add_index "courses", ["user_id"], name: "index_courses_on_user_id"
