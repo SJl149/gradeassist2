@@ -6,7 +6,7 @@
 <div class="row">
   <div class="col-md-12">
     <div class="row">
-      <% @courses.each do |course| %>
+      <% @current_courses.each do |course| %>
         <%= content_tag :div, id: "start_end_dates", data: { start_date: course.start_date.to_date, end_date: course.end_date.to_date, not_class_days: non_class_days(course.class_days) } do %>
         <% end %>
         <div class="col-md-6">
