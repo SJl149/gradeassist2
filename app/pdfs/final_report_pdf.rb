@@ -7,15 +7,17 @@ class FinalReportPdf
     @course = course
     @students = @course.students.order(:family_name)
     @categories = @course.categories
+    @final_grades_hash = {}
     grades_table
+    final_report
   end
 
   def grades_table
-    title
+    title("Grade Breakdown")
     num_categories = @categories.size + 3
     move_down 20
+
     table grades_table_rows do
-      row(0).font_style = :bold
       columns(1..num_categories).align = :center
       self.header = true
       self.row_colors = ["DDDDDD", "FFFFFF"]
@@ -24,13 +26,36 @@ class FinalReportPdf
     end
   end
 
-  def title
-    text "    #{@current_user.username}          #{@course.name}", size: 16, style: :bold
+  def final_report
+    self.start_new_page(:layout => :portrait)
+    title("Final Report")
+    move_down 20
+
+    table final_report_rows do
+      columns(1..9).align = :center
+      columns(2..9).size = 8
+      self.header = true
+      self.row_colors = ["DDDDDD", "FFFFFF"]
+      self.column_widths = { 2 => 25, 3 => 25, 4 => 25, 5 => 28, 6 => 150, 7 => 32, 8 => 32, 9 => 32}
+      self.cell_style = {:valign => :top}
+    end
+  end
+
+  def final_report_rows
+    ["Student Name \n (official)", "Name \n (In Class)", "\# Abs", "Cert \n Yes", "Cert \n No", "Rept", "Comments, Reasons, etc. \n (if fail or repeated.)", "Final \nLetter\nGrade", "Adj.\nGrade\nfor\nAbs.", "Admin\nUse\nOnly"] +
+    @students.map do |student|
+      ["#{student.family_name}, #{student.given_name}", "#{student.nickname}", "#{attendance}", "", "", "", "", "#{@final_grades_hash[student.id]}","",""]
+    end
+  end
+
+  def title(form_name)
+    formatted_text [ {text: "#{form_name}: ", size: 16},
+                     {text: "#{@course.name}     #{@current_user.username}", size: 16, styles: [:bold]}]
   end
 
   def grades_table_rows
     [table_header] +
-    @students.map  do |student|
+    @students.map do |student|
       student_line(student)
     end
   end
@@ -52,8 +77,9 @@ class FinalReportPdf
       final_grade += student_category_average * (category.weight / 100.0)
       line << student_category_average
     end
+    @final_grades_hash[student.id] = final_grade.to_i
     line << "#{final_grade.to_i} / #{letter_grade(final_grade)}"
-    line << "#{adjusted_final_grade(attendance, final_grade)}"#adjusted_final_grade(attendance, final_grade)
+    line << "#{adjusted_final_grade(attendance, final_grade)}"
   end
 
   def student_attendance(student)
