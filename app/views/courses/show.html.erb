@@ -41,6 +41,7 @@
         <%= link_to "Edit Class", edit_course_path, class: "btn btn-default btn-primary" %>
         <%= link_to "Delete Class", @course, method: :delete, data: {confirm: "Are you sure you want to delete this class?"}, class: "btn btn-default btn-danger" %>
         <%= link_to "Download Grade Breakdown", course_path(id: @course.id, format: :xlsx), data: {confirm: "Are you sure you want to download to this computer?"}, class: "btn btn-default btn-warning" %>
+        <%= link_to "Final Grade Reports", course_path(id: @course.id, format: :pdf), class: "btn btn-default btn-primary" %>
       </div>
     </div>
     <div class="col-md-2">

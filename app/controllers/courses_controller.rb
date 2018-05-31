@@ -7,6 +7,12 @@ class CoursesController < ApplicationController
     respond_to do |format|
       format.html
       format.xlsx
+      format.pdf do
+        pdf = FinalReportPdf.new(current_user, @course)
+        send_data pdf.render, filename: "#{@course.name}_final_report",
+                              type: "application/pdf",
+                              disposition: "inline"
+      end
     end
   end
 
