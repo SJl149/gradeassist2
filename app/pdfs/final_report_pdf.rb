@@ -12,45 +12,22 @@ class FinalReportPdf
     final_report
   end
 
+  # Grade Breakdown table
   def grades_table
     title("Grade Breakdown")
     num_categories = @categories.size + 3
-    move_down 20
+    move_down 10
 
     table grades_table_rows do
+      row(0).align = :center
       columns(1..num_categories).align = :center
       self.header = true
-      self.row_colors = ["DDDDDD", "FFFFFF"]
+      rows(1..-1).size = 10
+      self.row_colors = ["F0F0F0", "FFFFFF"]
       self.column_widths = {(num_categories - 1) => 80, num_categories => 80}
       self.cell_style = {:valign => :center}
+      self.width = 700
     end
-  end
-
-  def final_report
-    self.start_new_page(:layout => :portrait)
-    title("Final Report")
-    move_down 20
-
-    table final_report_rows do
-      columns(1..9).align = :center
-      columns(2..9).size = 8
-      self.header = true
-      self.row_colors = ["DDDDDD", "FFFFFF"]
-      self.column_widths = { 2 => 25, 3 => 25, 4 => 25, 5 => 28, 6 => 150, 7 => 32, 8 => 32, 9 => 32}
-      self.cell_style = {:valign => :top}
-    end
-  end
-
-  def final_report_rows
-    ["Student Name \n (official)", "Name \n (In Class)", "\# Abs", "Cert \n Yes", "Cert \n No", "Rept", "Comments, Reasons, etc. \n (if fail or repeated.)", "Final \nLetter\nGrade", "Adj.\nGrade\nfor\nAbs.", "Admin\nUse\nOnly"] +
-    @students.map do |student|
-      ["#{student.family_name}, #{student.given_name}", "#{student.nickname}", "#{attendance}", "", "", "", "", "#{@final_grades_hash[student.id]}","",""]
-    end
-  end
-
-  def title(form_name)
-    formatted_text [ {text: "#{form_name}: ", size: 16},
-                     {text: "#{@course.name}     #{@current_user.username}", size: 16, styles: [:bold]}]
   end
 
   def grades_table_rows
@@ -80,6 +57,38 @@ class FinalReportPdf
     @final_grades_hash[student.id] = final_grade.to_i
     line << "#{final_grade.to_i} / #{letter_grade(final_grade)}"
     line << "#{adjusted_final_grade(attendance, final_grade)}"
+    line
+  end
+
+  # Final Grade Report
+  def final_report
+    self.start_new_page(:layout => :portrait)
+    title("Final Report")
+    move_down 20
+
+    table final_report_rows do
+      row(0).align = :center
+      column(9).background_color = "F0F0F0"
+      columns(1..9).align = :center
+      row(0).columns(2..9).size = 8
+      self.header = true
+      self.column_widths = { 2 => 25, 3 => 25, 4 => 25, 5 => 28, 6 => 150, 7 => 32, 8 => 32, 9 => 32}
+      self.cell_style = {:valign => :top}
+    end
+  end
+
+  def final_report_rows
+    [["Student Name \n (official)", "Name \n (In Class)", "\# Abs", "Cert Yes", "Cert No", "Rept", "Comments, Reasons, etc. \n (if fail or repeated.)", "Final \nLetter\nGrade", "Adj.\nGrade\nfor\nAbs.", "Admin\nUse\nOnly"]] +
+    @students.map do |student|
+      attendance = student_attendance(student)
+      ["#{student.family_name}, #{student.given_name}", "#{student.nickname}", "#{attendance}", "", "", "", "", "#{letter_grade(@final_grades_hash[student.id])}", "#{adjusted_final_grade(attendance, @final_grades_hash[student.id])}", ""]
+    end
+  end
+
+  # Helper methods for both forms
+  def title(form_name)
+    formatted_text [ {text: "#{form_name}: ", size: 14},
+                     {text: "#{@course.name}     #{@current_user.username}", size: 14, styles: [:bold]}]
   end
 
   def student_attendance(student)
