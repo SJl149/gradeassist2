@@ -36,6 +36,7 @@
 </div>
 <div class="panel panel-default">
   <div class="panel-body">
+<<<<<<< HEAD
     <div class="col-md-9 col-md-offset-1">
       <div class="btn-group btn-group-justified">
         <%= link_to "Edit Class", edit_course_path, class: "btn btn-default btn-primary" %>
@@ -43,20 +44,34 @@
         <%= link_to "Download Grade Breakdown", course_path(id: @course.id, format: :xlsx), data: {confirm: "Are you sure you want to download to this computer?"}, class: "btn btn-default btn-warning" %>
         <%= link_to "Final Grade Reports", course_path(id: @course.id, format: :pdf), class: "btn btn-default btn-primary" %>
         <!-- <%= link_to "Attendance Report", course_path(id: @course.id, format: :pdf), class: "btn btn-default btn-info" %> -->
+=======
+    <div class="col-md-12">
+      <div class="col-md-6 col-md-offset-1">
+        <div class="btn-group btn-group-justified">
+          <%= link_to "Download Grade .xls", course_path(id: @course.id, format: :xlsx), data: {confirm: "Are you sure you want to download to this computer?"}, class: "btn btn-default btn-primary" %>
+          <%= link_to "Grade Report PDF", course_path(id: @course.id, format: :pdf), class: "btn btn-default btn-primary" %>
+        </div>
+>>>>>>> 1ca268af930e5c90aaa61bda800ccfbae0708b23
       </div>
-    </div>
-    <div class="col-md-2">
-      <% if @course.archive? %>
-        <%= form_for @course do |f| %>
-          <%= f.hidden_field :archive, value: false %>
-          <%= f.submit 'Unarchive', class: "btn btn-default btn-success" %>
+      <div class="col-md-3">
+        <div class="btn-group btn-group-justified">
+          <%= link_to "Edit Class", edit_course_path, class: "btn btn-default btn-danger" %>
+          <%= link_to "Delete Class", @course, method: :delete, data: {confirm: "Are you sure you want to delete this class?"}, class: "btn btn-default btn-danger" %>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <% if @course.archive? %>
+          <%= form_for @course do |f| %>
+            <%= f.hidden_field :archive, value: false %>
+            <%= f.submit 'Unarchive', class: "btn btn-default btn-info" %>
+          <% end %>
+        <% else %>
+          <%= form_for @course do |f| %>
+            <%= f.hidden_field :archive, value: true %>
+            <%= f.submit 'Archive', class: "btn btn-default btn-info" %>
+          <% end %>
         <% end %>
-      <% else %>
-        <%= form_for @course do |f| %>
-          <%= f.hidden_field :archive, value: true %>
-          <%= f.submit 'Archive', class: "btn btn-default btn-success" %>
-        <% end %>
-      <% end %>
+      </div>
     </div>
   </div>
 </div>

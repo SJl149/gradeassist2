@@ -12,4 +12,10 @@ class Course < ActiveRecord::Base
   validates :name, uniqueness: true
   validates :start_date, presence: true
   validates :end_date, presence: true
+
+  after_initialize :set_defaults, unless: :persisted?
+
+  def set_defaults
+    self.archive = false if self.archive.nil?
+  end
 end
