@@ -95,14 +95,14 @@ class FinalReportPdf
   # Attendance record for class
   def attendance_record
     schedule = course_schedule
-    schedule.each_slice(20) do |schedule_slice|
+    schedule.each_slice(23) do |schedule_slice|
       self.start_new_page
 
       title("Attendance")
       move_down(10)
 
       table attendance_record_rows(schedule_slice) do
-        self.column_widths = { 0 => 150 }
+        self.column_widths = { 0 => 130 }
         row(0).columns(1..-1).size = 8
         row(0).border_bottom_width = 2
         columns(1..-1).align = :center
