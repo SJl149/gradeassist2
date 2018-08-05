@@ -92,55 +92,30 @@ class FinalReportPdf
     report_rows
   end
 
-  # Attendance record for class
+  # Attendance Record report
   def attendance_record
-    schedule = course_schedule
-    schedule.each_slice(22) do |schedule_slice|
-      self.start_new_page
+    self.start_new_page
+    title("Attendance")
+    move_down(10)
 
-      title("Attendance")
-      move_down(10)
-
-      table attendance_record_rows(schedule_slice) do
-        column(0).width = 100
-        row(0).columns(1..-1).size = 8
-        rows(1..-1).size = 10
-        row(0).border_bottom_width = 2
-        columns(1..-1).align = :center
-        self.row_colors = ["FFFFFF", "DDDDDD"]
+    @students.each do |student|
+      text "#{student.family_name}, #{student.given_name} (#{student.nickname})", :style => :bold
+      indent(20) do
+        text attendance_record_line(student)
       end
     end
   end
 
-  def attendance_record_rows(schedule_slice)
-    [attendance_record_table_header(schedule_slice)] +
-    @students.map do |student|
-      student_attendance_line(student, schedule_slice)
-    end
-  end
-
-  def student_attendance_line(student, schedule_slice)
-    line = ["#{student.family_name}, #{student.given_name}"]
-    schedule_slice.each do |date_of_class|
-      attendance_status = student.attendances.find_by(class_date: date_of_class.beginning_of_day..date_of_class.end_of_day)
-      case attendance_status.status
-      when "present"
-        line << "P"
-      when "late"
-        line << "L"
-      when "absent"
-        line << "A"
+  def attendance_record_line(student)
+      absences = student.attendances.where(status: 2)
+      lates = student.attendances.where(status: 1)
+      if absences.empty? && lates.empty?
+        line = " "
       else
-        line << " "
+        line = "Lates: " + class_date_list_to_string(lates) + "\n"
+        line += "Absences: " + class_date_list_to_string(absences)
       end
-    end
-    line
-  end
-
-  def attendance_record_table_header(schedule)
-    column_names = ["Name"]
-    schedule.each { |day_of_class| column_names << day_of_class.strftime("%-m / %d") }
-    column_names
+      line
   end
 
   # Helper methods
@@ -151,6 +126,14 @@ class FinalReportPdf
 
   def student_total_absences(student)
     student.attendances.where(status: 2).count + (student.attendances.where(status: 1).count / 3)
+  end
+
+  def class_date_list_to_string(dates)
+    date_list = []
+    dates.each do |date|
+      date_list << date.class_date.strftime("%-m/%d")
+    end
+    date_list.join(", ")
   end
 
   def course_schedule
