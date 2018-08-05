@@ -133,7 +133,7 @@ class FinalReportPdf
     dates.each do |date|
       date_list << date.class_date.strftime("%-m/%d")
     end
-    date_list.join(", ")
+    date_list.sort_by {|s| Date.strptime(s, '%m/%d')}.join(", ")
   end
 
   def course_schedule
